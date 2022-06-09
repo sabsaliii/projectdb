@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>최윤서</title>
+   
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap');
+     body{
+        margin: 0;
+        /*font-family : 'gulim', 'gothic';*/
+        position: relative;
+     }
+    .header{
+        position: relative;
+        top: 0px;
+        width: 100%;
+        height: 7vh;
+        background-color: white;
+        /*border: 1px solid black;*/
+    }
+    .header .nav{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        top: 0px;
+        margin: 0px auto;
+        width: 95%;
+        background-color: white;
+        height: 100%;
+        /*border: 1px solid black;*/
+
+    }
+  
+    .header .nav .logo{
+        position: relative;
+        align-items: center;
+        float: left;
+        font-weight: 500;
+        background-color: white;
+        width: 180px;
+        justify-content: space-between;
+        /*height: 100%;*/
+        /*border: 1px solid black;*/
+        cursor: pointer;
+
+    }
+    .header .nav .logo a{
+        text-decoration: none;
+        color: black;
+        font-size: 14pt;
+    }
+    .header .nav .logo a:hover{
+        /*text-decoration: none;*/
+        color: royalblue;
+        /*font-size: 14pt;*/
+    }
+   
+    .header .nav .menu{
+        position: relative;
+        align-items: center;
+        text-align: right;
+        display: flex;
+        background-color: white;
+        width: 50%;
+        /*height: 100%;*/
+        /*border: 1px solid black;*/
+        cursor: pointer;
+
+    }
+    .header .nav .menu .menu1{
+        position: relative;
+        align-items: center;
+        float: left;
+        background-color: white;
+        width: 200px;
+        /*height: 100%;*/
+        /*border: 1px solid black;*/
+        cursor: pointer;
+
+    }
+     .a1{
+        text-decoration: none;
+        color: black;
+     }
+     .a1:hover{
+        color: green;
+     }
+   .main{
+        position: relative;
+        top: 0px;
+        align-items: center;
+        width: 100%;
+        min-width: 1280px;
+        min-height: 180vh;
+        /*height: 180%;*/
+        background-color: rgb(240, 240, 240);
+    }
+    .main .section1{
+        position: relative;
+        align-items: center;
+        top: 20px;
+        width: 72%;
+        height: 500px;
+        padding: 20px 10px 20px 10px;
+        margin: 0px auto;
+        /*border: 1px solid black;*/
+        background-color: white;
+    }
+     .main .section2{
+        position: relative;
+        align-items: center;
+        top: 50px;
+        width: 72%;
+        height: 480px;
+        padding: 20px 10px 20px 10px;
+        margin: 0px auto;
+        /*border: 1px solid black;*/
+        background-color: white;
+    }
+    .main .section1 .title{
+        position: relative;
+        width: 100%;
+        font-size: xx-large;
+        font-weight: 700;
+        padding: 0 0 0 20px;
+        margin: 0px auto;
+        /*border: 1px solid black; */
+        margin-bottom: 20px;
+    }
+     .main .section2 .title{
+        position: relative;
+        width: 100%;
+        font-size: xx-large;
+        font-weight: 700;
+        padding: 0 0 0 20px;
+        margin: 0px auto;
+        /*border: 1px solid black; */
+        margin-bottom: 20px;
+    }
+    .main .section1 .category{
+         position:relative;
+         display: flex;
+         width: 80%;
+         flex-direction: row;
+         flex-wrap: wrap;
+         justify-content: space-evenly;
+         margin: 0px auto;
+         height: 400px;
+         align-items: center;
+         align-content: center;
+         padding: 20px 0px 20px 0px;
+         background-color: rgb(240, 240, 240);
+         /*border: 1px solid black;*/
+    }
+    .main .section2 .category{
+         position:relative;
+         /*display: block;*/
+         width: 95%;
+         flex-direction: column;
+         flex-wrap: wrap;
+         justify-content: space-evenly;
+         margin: 0px auto;
+         height: 380px;
+         align-items: center;
+         align-content: center;
+         padding: 20px 0px 20px 0px;
+         background-color: rgb(240, 240, 240);
+         /*border: 1px solid black;*/
+    }
+    .main .section1 .category .img1{
+        position:relative;
+        float: left;
+        text-align: center;
+        margin: 10px 10px 10px 20px;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-image: url("https://mblogthumb-phinf.pstatic.net/MjAxNzA4MDVfMTQg/MDAxNTAxOTExMTU5NjAx.vuIbw5v0erTofbBROGJ5WBdzLCRwg0ro_wTlwb1aEeog.rf3j_7Okg_R4gFDRNKbCCEN6JohpBbx65CvWNcNCSWsg.JPEG.lenovo_korea/cpu_20151118_01.jpg?type=w2");
+        background-size:cover;
+        background-repeat: no-repeat;
+    }
+    .main .section1 .category .img2{
+        position:relative;
+        float: left;
+        margin: 10px 10px 10px 20px;
+        text-align: center;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-image: url("https://t1.daumcdn.net/cfile/tistory/2509883656F29F4502");
+        background-size:cover;
+        background-repeat: no-repeat;
+    }
+     .main .section1 .category .img3{
+        position:relative;
+        float: left;
+        margin: 10px 10px 10px 20px;
+        text-align: center;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-image: url("https://assets-prd.ignimgs.com/2021/09/03/91ljnskev9l-ac-sl1500-1630685467011.jpg?height=220&dpr=2");
+        background-size:cover;
+        background-repeat: no-repeat;
+    }
+    .main .section1 .category .img4{
+        position:relative; 
+        text-align: center;
+        margin: 10px 10px 10px 20px;
+        float: left;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-image: url("https://w.namu.la/s/bfb98a96e3fe665a4ebfac35aacc14d7ed2b4e804c04379a7f5e9a76f06cfe18c5b15b82199dd6e25c4dca5dc818b6ca6b92bbb23020f7324b417c062647d06282817912e4345ef972baf11abf7434865bbf5eb59f3fce03cd286f7431bfbd92");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .main .section1 .category .img5{
+        position:relative;
+        text-align: center;
+        margin: 10px 10px 10px 20px;
+        float: left;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Vertex_2_Solid_State_Drive_by_OCZ-top_oblique_PNr%C2%B00307.jpg/600px-Vertex_2_Solid_State_Drive_by_OCZ-top_oblique_PNr%C2%B00307.jpg");
+        background-size:cover;
+        background-repeat: no-repeat;
+    }
+    .main .section1 .category .text1{
+        color: black;
+        font-size: large;
+        background-color: white;
+    }
+    .main .section1 .category .text1:hover{
+        color: green;
+    }
+    .main .section2 .category .product_box{
+        position: relative;
+        display: flex;
+        justify-content: space-evenly;
+        height: 350px;
+        align-content: center;
+        /*border: 1px solid black;*/
+
+    }
+    .main .section2 .category .product_box .product1{
+        position: relative;
+        float: left;
+        text-align: center;
+        height: 100%;
+        width: 22%;
+        border: 1px solid black;
+
+    }
+    .main .section2 .category .paging{
+        position: relative;
+        height: 30px;
+        align-items: center;
+        text-align: center;
+        /*border: 1px solid black;*/
+        padding: 5px 0 0px 300px;
+    }
+    ul {
+        list-style:none;
+        float:left;
+        display:inline-block;
+        margin: 0px auto;
+        padding-top: 8px;
+    }
+    ul li {
+        float:left;
+    }
+    ul li a {
+        float:left;
+        padding:4px;
+        margin-right:3px;
+        width:15px;
+        color:#000;
+        font:bold 12px tahoma;
+        border:1px solid #eee;
+        text-align:center;
+        text-decoration:none;
+    }
+    ul li a:hover, ul li a:focus {
+        color:#fff;
+        border:1px solid green;
+        background-color:green;
+    }
+    .footer {
+            position: relative;
+            top: 0px;
+            width: 100%;
+            min-width: 1280px;
+            height: 5vh;
+            background-color: rgb(92,92,92);
+        }
+
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo"><a href="project_main.html">윤 & 현 컴퍼니</a></div>
+            <div class="menu">
+                <!-- <div class="menu1"><a class ="a1" href ="">branch</a></div> -->
+                <div class="menu1"><a class = "a1" href ="admin.html">admin</a></div>
+               <div class="menu1"><a class = "a1" href ="all_view.html">products</a></div>
+               <div class="menu1"><a class = "a1" href ="login.html">login</a></div>
+
+           </div>
+        </nav>
+
+    </header>
+    <main class="main">
+        <section class="section1">
+            <div class="title">카테고리 바로가기</div>
+            <div class="category">
+                <a href="all_view.html"><div class="img1 text1">CPU</div></a>
+                <a href="all_view.html"><div class="img2 text1">비디오 카드</div></a>
+                <a href="all_view.html"><div class="img3 text1">RAM</div></a>
+                <a href="all_view.html"><div class="img4 text1">마더 보드</div></a>
+                <a href="all_view.html"><div class="img5 text1">저장소</div></a>
+            </div>
+        </section>
+       <section class="section2"> 
+            <div class ="title">전체보기</div>
+            <div class="category">
+                <div class="product_box">
+                    <div class ="product1">상품1</div>
+                    <div class ="product1">상품2</div>
+                    <div class ="product1">상품3</div>
+                    <div class ="product1">상품4</div>
+                </div>
+
+                <div class ="paging">
+                    <ul>  
+                        <li><a href="#">1</a></li>  
+                        <li><a href="#">2</a></li>  
+                        <li><a href="#">3</a></li>  
+                        <li><a href="#">4</a></li>  
+                        <li><a href="#">5</a></li>  
+                        <li><a href="#">6</a></li>  
+                        <li><a href="#">7</a></li>  
+                        <li><a href="#">8</a></li>  
+                        <li><a href="#">9</a></li>  
+                        <li><a href="#">10</a></li>  
+                    </ul>
+                </div>  
+            </div>
+       </section>
+        
+    </main>
+    <footer class="footer">
+
+    </footer>
+
+</body>
+
+</html>

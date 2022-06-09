@@ -25,9 +25,27 @@ exports.getProductDetail = async (productID) => {
         let connection = await pool.getConnection('ys');
         const data = await connection.execute(query.getProductDetail,[productID]);
         console.log(':: Service - getProductDetail success ::')
-        console.log(data.rows[0])
+        // console.log(data.rows[0])
         await connection.close()
         return data.rows[0];
+    } catch (err) {
+        console.log(err);
+        throw Error(err);
+    }
+};
+
+exports.search = async (key) => {
+    try {
+        let connection = await pool.getConnection('ys');
+        key = '%'+key+'%';
+        const lowerKey = key.toUpperCase();
+        const upperKey =key.toLowerCase();
+        // console.log(lowerKey,upperKey);
+        const data = await connection.execute(query.search,[key]);
+        
+        console.log(':: Service - search success ::')
+        await connection.close()
+        return data.rows;
     } catch (err) {
         console.log(err);
         throw Error(err);

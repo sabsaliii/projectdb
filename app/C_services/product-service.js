@@ -1,10 +1,16 @@
 const query = require('../D_queries/product-query');
 const pool = require('oracledb');
 
-exports.getProducts = async () => {
+exports.getProducts = async (categoryID) => {
     try {
         let connection = await pool.getConnection('ys');
-        const data = await connection.execute(query.getProducts);
+        let data
+        if(categoryID == null){
+            data = await connection.execute(query.getProducts);
+        }else{
+            data = await connection.execute(query.getProducts_category,[categoryID]);
+        }
+        
         console.log(':: Service - getProducts success ::')
         //console.log(data.rows)
         await connection.close()

@@ -251,7 +251,7 @@
 <body>
     <header class="header">
         <nav class="nav">
-            <div class="logo"><a href="project_main.html">윤 & 현 컴퍼니</a></div>
+            <div class="logo"><a href="/">윤 & 현 컴퍼니</a></div>
             <div class="menu">
                 <div class="menu1"><div class="img1"></div></div>
                 <div class="menu1"><a class ="a1" href ="">logout</a></div>
@@ -269,11 +269,11 @@
             <br>
            <div class="menu"><a href=""> 지점 관리</a></div>
            <hr class="menu_hr">
-           <div class="menu"><a href="admin.html"> 담당자 관리</a></div>
+           <div class="menu"><a href="admin"> 담당자 관리</a></div>
            <hr class="menu_hr">
-           <div class="menu"><a href="admin_orders.html"> 주문 관리</a></div>
+           <div class="menu"><a href="admin_orders"> 주문 관리</a></div>
            <hr class="menu_hr">
-           <div class="menu"><a href="admin_warehouse.html"> 창고 관리</a></div>
+           <div class="menu"><a href="admin_warehouse"> 창고 관리</a></div>
            <hr class="menu_hr">
            <div class="menu"><a href=""> 발주 관리</a></div>
            <hr class="menu_hr">
@@ -282,39 +282,18 @@
         <section class="section1">
             <div class="title">담당자 관리</div>
             <div class="box1">
-                <div class="box_item1">
-                    <div class="item_img1"><img src="https://postfiles.pstatic.net/MjAyMjA2MDNfODIg/MDAxNjU0MjY1NjM3MTYy.GxWUeMQVJzxRpa8msT8t91s-iMtVndrmDhE7hWiwvxQg.8xG7WYRYRtpz6uKCQbqp-NciF9tPhKOYIKHnImWKiqUg.PNG.cys4189/pngwing.com.png?type=w966"></div>
-                    <div class="item_name">최윤서</div>
-                    <div class="item_store_name">Yoon & Hyun Company</div>
-                    <form action="admin_customer.html">
+                    <% for(var i=data.length-1; i>=0; i--) {
+                        var Data = data[i];
+                        %>  <div class="box_item1">
+                    <div class="item_img1"><img src="https://i.postimg.cc/gksLsxBm/pngwing-com.png"></div>
+                    <div class="item_name"><%=Data.FIRST_NAME%>&nbsp;<%=Data.LAST_NAME%></div>
+                    <div class="item_store_name"><%=Data.NAME%></div>
+                    <form action="/admin/customerDetail/<%=Data.CONTACT_ID%>">
                     <div class="item_btn1"><input type="submit" value="담당자 정보 열람"></div>
                     </form>
                 </div>
-                 <div class="box_item1">
-                    <div class="item_img1"><img src="https://postfiles.pstatic.net/MjAyMjA2MDNfODIg/MDAxNjU0MjY1NjM3MTYy.GxWUeMQVJzxRpa8msT8t91s-iMtVndrmDhE7hWiwvxQg.8xG7WYRYRtpz6uKCQbqp-NciF9tPhKOYIKHnImWKiqUg.PNG.cys4189/pngwing.com.png?type=w966"></div>
-                    <div class="item_name">최윤서</div>
-                    <div class="item_store_name">Yoon & Hyun Company</div>
-                    <div class="item_btn1"><input type="submit" value="담당자 정보 열람"></div>
-                </div>
-                 <div class="box_item1">
-                    <div class="item_img1"><img src="https://postfiles.pstatic.net/MjAyMjA2MDNfODIg/MDAxNjU0MjY1NjM3MTYy.GxWUeMQVJzxRpa8msT8t91s-iMtVndrmDhE7hWiwvxQg.8xG7WYRYRtpz6uKCQbqp-NciF9tPhKOYIKHnImWKiqUg.PNG.cys4189/pngwing.com.png?type=w966"></div>
-                    <div class="item_name">최윤서</div>
-                    <div class="item_store_name">Yoon & Hyun Company</div>
-                    <div class="item_btn1"><input type="submit" value="담당자 정보 열람"></div>
-                </div>
-                 <div class="box_item1">
-                    <div class="item_img1"><img src="https://postfiles.pstatic.net/MjAyMjA2MDNfODIg/MDAxNjU0MjY1NjM3MTYy.GxWUeMQVJzxRpa8msT8t91s-iMtVndrmDhE7hWiwvxQg.8xG7WYRYRtpz6uKCQbqp-NciF9tPhKOYIKHnImWKiqUg.PNG.cys4189/pngwing.com.png?type=w966"></div>
-                    <div class="item_name">최윤서</div>
-                    <div class="item_store_name">Yoon & Hyun Company</div>
-                    <div class="item_btn1"><input type="submit" value="담당자 정보 열람"></div>
-                </div>
-                <div class="box_item1">
-                    <div class="item_img1"><img src="https://postfiles.pstatic.net/MjAyMjA2MDNfODIg/MDAxNjU0MjY1NjM3MTYy.GxWUeMQVJzxRpa8msT8t91s-iMtVndrmDhE7hWiwvxQg.8xG7WYRYRtpz6uKCQbqp-NciF9tPhKOYIKHnImWKiqUg.PNG.cys4189/pngwing.com.png?type=w966"></div>
-                    <div class="item_name">최윤서</div>
-                    <div class="item_store_name">Yoon & Hyun Company</div>
-                    <div class="item_btn1"><input type="submit" value="담당자 정보 열람"></div>
-                </div>
-
+                <%} %>
+               
             </div>
         
         </section>

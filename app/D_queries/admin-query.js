@@ -1,0 +1,2 @@
+exports.getCustomers = 'select contact_id, first_name, last_name, name from contacts natural join customers';
+exports.getCustomer = 'select * from contacts natural join customers where contact_id= :num';

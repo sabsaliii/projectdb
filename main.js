@@ -19,6 +19,7 @@ app.get('/',(req,res)=>res.render('project_main'));
 
 require('./app/A_routes/product-route')(app)
 require('./app/A_routes/admin-route')(app)
+require('./app/A_routes/user-route')(app)
 
 server.listen(3000, ()=>{
     console.log("Server running at http://localhost:3000/");

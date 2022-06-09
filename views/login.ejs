@@ -147,7 +147,7 @@
         margin: 0 auto;
         width: 30%;
         height: 30%;
-        background-image: url("https://postfiles.pstatic.net/MjAyMjA2MDNfODIg/MDAxNjU0MjY1NjM3MTYy.GxWUeMQVJzxRpa8msT8t91s-iMtVndrmDhE7hWiwvxQg.8xG7WYRYRtpz6uKCQbqp-NciF9tPhKOYIKHnImWKiqUg.PNG.cys4189/pngwing.com.png?type=w966");
+        background-image: url("https://i.postimg.cc/gksLsxBm/pngwing-com.png");
         /*border: 1px solid black;*/
         background-size:contain;
         background-repeat: no-repeat;
@@ -198,12 +198,12 @@
 <body>
     <header class="header">
         <nav class="nav">
-            <div class="logo"><a href="project_main.html">윤 & 현 컴퍼니</a></div>
+            <div class="logo"><a href="/">윤 & 현 컴퍼니</a></div>
             <div class="menu">
                 <!-- <div class="menu1"><a class ="a1" href ="">branch</a></div>
                 <div class="menu1"><a class = "a1" href ="">orders</a></div> -->
-               <div class="menu1"><a class = "a1" href ="all_view.html">products</a></div>
-               <div class="menu1"><a class = "a1" href ="">login</a></div>
+               <div class="menu1"><a class = "a1" href ="/allProduct">products</a></div>
+               <div class="menu1"><a class = "a1" href ="/login">login</a></div>
 
            </div>
         </nav>
@@ -215,9 +215,11 @@
             <div class="content">
                 <div class="img1"></div>
                 <div class="menu1">
-                    <input type="text" name="user_id" placeholder="ID / Email">
-                    <input type="password" name="password" placeholder="Password">
-                    <input type="submit" name="btn1" value="login">
+                    <form action="/login" method="post">
+                        <input type="text" name="user_id" placeholder="ID / Email">
+                        <input type="password" name="password" placeholder="Password">
+                        <input type="submit" name="btn1" value="login">
+                    </form>
                 </div>
             </div>
         </section>

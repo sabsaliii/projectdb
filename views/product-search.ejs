@@ -128,11 +128,7 @@
             position: relative;
             width: 180px;
             height: 100%;
-<<<<<<< HEAD
-            background-image: url("https://postfiles.pstatic.net/MjAyMjA2MDRfNSAg/MDAxNjU0MjcyMDUyNjQ0.QsclcyG8maGrK2E02eceubQ1oaRAzdiep28rjH6l1rQg.BBIrb5h4cNMs38ox8WKw1tMGYeOilmxbp6Gom9X-phsg.PNG.cys4189/logo.png?type=w966");
-=======
             background-image: url("https://i.postimg.cc/SNsvQM9v/logo.png");
->>>>>>> fccfaf99f1bc3fd0d8b33d204b4e27c208f66cf8
             /*border: 1px solid black;*/
             background-size: contain;
             background-repeat: no-repeat;
@@ -145,11 +141,7 @@
             align-items: center;
             margin-left: 30px;
             width: 400px;
-<<<<<<< HEAD
-            height: 100%;
-=======
             height: 50px;
->>>>>>> fccfaf99f1bc3fd0d8b33d204b4e27c208f66cf8
         }
 
         .main .section1 .search input {
@@ -172,6 +164,9 @@
             border-radius: 5px;
             background-color: rgb(240, 240, 240);
             font-size: 12pt;
+        }
+        .main .section1 .search input[type=submit]:hover {
+            background-color: rgb(180, 180, 180);
         }
 
 
@@ -229,8 +224,8 @@
         .main .section2 .right {
             position: relative;
             display: flex;
-            flex-flow: column nowrap;
-            /*justify-content: space-evenly;*/
+            flex-flow: column wrap;
+            justify-content: space-evenly;
             align-items: center;
             padding: 20px 20px 20px 20px;
             width: 900px;
@@ -250,8 +245,8 @@
             padding: 10px 0 10px 0;
             margin-bottom: 10px;
             top: 10px;
-            /*text-align: center;*/
-            font-size: 18pt;
+            text-align: center;
+            font-size: 22pt;
             font-weight: 700;
             /*border: 1px solid black;*/
         }
@@ -261,13 +256,13 @@
             /*min-height: 350px;*/
             min-height: 350px;
             display: flex;
-            flex-flow: row nowrap;
+            flex-flow: row wrap;
             align-items: center;
             align-content: stretch;
             justify-content: flex-start;
             margin: 0 auto;
             padding: 10px 10px 10px 25px;
-            border: 1px solid black;
+            /*border: 1px solid black;*/
         }
 
         .main .section2 .right .box1 .box_item1 {
@@ -321,21 +316,12 @@
 <body>
     <header class="header">
         <nav class="nav">
-<<<<<<< HEAD
-            <div class="logo"><a href="project_main.html">윤 & 현 컴퍼니</a></div>
-            <div class="menu">
-                <!--                 <div class="menu1"><a class ="a1" href ="">branch</a></div>
-                <div class="menu1"><a class = "a1" href ="">orders</a></div> -->
-                <div class="menu1"><a class="a1" href="">products</a></div>
-                <div class="menu1"><a class="a1" href="login.html">login</a></div>
-=======
             <div class="logo"><a href="/">윤 & 현 컴퍼니</a></div>
             <div class="menu">
                 <!--                 <div class="menu1"><a class ="a1" href ="">branch</a></div>
                 <div class="menu1"><a class = "a1" href ="">orders</a></div> -->
                 <div class="menu1"><a class="a1" href="/allProduct">products</a></div>
                 <div class="menu1"><a class="a1" href="login">login</a></div>
->>>>>>> fccfaf99f1bc3fd0d8b33d204b4e27c208f66cf8
 
             </div>
         </nav>
@@ -344,32 +330,12 @@
     <main class="main">
         <section class="section1">
             <div class="logo"></div>
-<<<<<<< HEAD
-            <div class="search">
-                <input type="text" name="search" placeholder="검색어를 입력하세요.">
-                <input type="submit" value="검색">
-            </div>
-        </section>
-        <section class="section2">
-            <div class="left">
-                <div class="menu1"><a href="">상품 전체 보기</a></div>
-                <div class="menu1">카테고리</div>
-                <div class="menu1"><a href="">CPU</a></div>
-                <div class="menu1"><a href="">비디오 카드</a></div>
-                <div class="menu1"><a href="">RAM</a></div>
-                <div class="menu1"><a href="">마더 보드</a></div>
-                <div class="menu1"><a href="">저장소</a></div>
-                </ul>
-            </div>
-            <div class="right">
-                <div class="title"><%=data.PRODUCT_NAME%></div>
-=======
             <form action="/search" method="get">
-                <div class="search">
-                    <form action="/search" method="get">
-                        <input type="text" name="search" placeholder="검색어를 입력하세요.">
-                        <input type="submit" value="검색">
-                </div>
+            <div class="search">
+                <form action="/search" method="get">
+                    <input type="text" name="search" placeholder="검색어를 입력하세요.">
+                    <input type="submit" value="검색">
+            </div>
             </form>
         </section>
         <section class="section2">
@@ -384,37 +350,33 @@
                 </ul>
             </div>
             <div class="right">
-                <div class="title">
-                    <%=data.PRODUCT_NAME%>
-                </div>
->>>>>>> fccfaf99f1bc3fd0d8b33d204b4e27c208f66cf8
-                <div class="box1">
-                    <div class="item_img1"><img
-                            src="https://images.samsung.com/kdp/goods/2021/12/17/dd1ea002-7de0-46c1-8823-fc55f91bbe33.png?$PF_PRD_PNG$">
+                <% if(data.length){%>
+                    <div class="title">
+                       총 <%=data.length%>개의 검색 결과가 있습니다.
                     </div>
-                    <div class="item1">
-                        <ul>
-<<<<<<< HEAD
-                            <li>제품 설명 : <%=data.DESCRIPTION%></li>
-                            <li>판매가 : <%=data.LIST_PRICE%></li>
-=======
-                            <li>제품 설명 : <%=data.DESCRIPTION%>
-                            </li>
-                            <li>판매가 : <%=data.LIST_PRICE%>
-                            </li>
->>>>>>> fccfaf99f1bc3fd0d8b33d204b4e27c208f66cf8
-                            <li>
-                                <div class="item2">주문수량할거임!</div>
-                            </li>
-                        </ul>
-                    </div>
+                    <%}else { %>
+                        <div class="title">검색된 상품이 없습니다.</div>
+                        <%} %>
 
+                            <div class="box1">
 
-                </div>
+                                <% for(var i=data.length-1; i>=0; i--) {
+                                    var Data = data[i];
+                                    %> <div class="box_item1">
+                                        <%=data.length-i%>
+                                            <div class="item_img1"><img
+                                                    src="https://images.samsung.com/kdp/goods/2021/12/17/dd1ea002-7de0-46c1-8823-fc55f91bbe33.png?$PF_PRD_PNG$">
+                                            </div>
+                                            <div class="item_name">
+                                                <%=Data.PRODUCT_NAME%>
+                                            </div>
+                                            <form action="/productDetail/<%=Data.PRODUCT_ID%>" method="get">
+                                                <div class="item_btn1"><input type="submit" value="자세히 보기"></div>
+                                            </form>
+                                    </div>
+                                    <%} %>
 
-
-
-            </div>
+                            </div>
             </div>
         </section>
 

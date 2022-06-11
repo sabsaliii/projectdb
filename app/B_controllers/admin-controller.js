@@ -28,17 +28,6 @@ module.exports.getBranches = async (req,res)=>{
       return res.status(500).json(err);
     }
 }
-// exports.getBranches_category = async (req, res)=>{
-//   try {
-//       const warehouseID = req.params.warehouseId;
-//       console.log(warehouseID)
-//       const row = await AdminService.getBranches_category(warehouseID);
-//       console.log(':: Controller - getBranches_category success ::')
-//       return res.render('admin_branch', { data: row });
-//     } catch (err) {
-//       return res.status(500).json(err);
-//     }
-// };
 
 exports.getCustomer = async (req, res)=>{
     try {

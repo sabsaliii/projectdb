@@ -12,7 +12,6 @@ module.exports=router=>{
     router.get('/admin_warehouse',AdminController.getWarehouses);
     router.get('/warehouseDetail/:warehouseId',AdminController.getWarehouse);
     router.get('/admin_branch',AdminController.getBranches);
-    // router.get('/admin_branch/:warehouseId',AdminController.getBranches_category);
     router.get('/branchDetail/:customerId',AdminController.getBranch);
 
 }

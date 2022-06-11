@@ -61,19 +61,6 @@ exports.getBranches = async (warehouseID) => {
         throw Error(err);
     }
 };
-// exports.getBranches_category = async (warehouseID) => {
-//     try{
-//         let connection = await pool.getConnection('ys');
-//         const data = await connection.execute(query.getBranches_category,[warehouseID]);
-//         console.log(':: Service - getBranches_category success ::')
-//         console.log(data.rows)
-//         await connection.close()
-//         return data.rows[0];
-//     }catch(err){
-//         console.log(err);
-//         throw Error(err);
-//     }
-// };
 
 exports.getCustomer = async (contactID) => {
     try{

@@ -25,7 +25,7 @@ exports.getProductDetail = async (productID) => {
         let connection = await pool.getConnection('ys');
         const data = await connection.execute(query.getProductDetail,[productID]);
         console.log(':: Service - getProductDetail success ::')
-        // console.log(data.rows[0])
+        console.log(data.rows[0])
         await connection.close()
         return data.rows[0];
     } catch (err) {

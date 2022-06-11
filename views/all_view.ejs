@@ -136,40 +136,50 @@
 
         .main .section1 .search {
             position: relative;
-            display: flex;
-            flex-flow: row nowrap;
-            align-items: center;
+            width: 300px;
             margin-left: 30px;
-            width: 400px;
-            height: 50px;
         }
 
         .main .section1 .search input {
-            position: relative;
-            width: 90%;
-            /*margin: 0;*/
-            padding: 0 10px 0 10px;
-            height: 60%;
-            /*border: none;*/
-            border-radius: 5px;
-            font-size: 12pt;
+            width: 100%;
+            border: 2px solid rgb(50, 50, 50);
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 15px;
+            
         }
 
-        .main .section1 .search input[type=submit] {
-            position: relative;
+        .main .section1 .search img {
+            position: absolute;
+            width: 17px;
+            top: 10px;
+            right: 0px;
             margin: 0;
-            padding: 0 10px 0 10px;
-            width: 20%;
-            height: 70%;
-            border-radius: 5px;
-            background-color: rgb(240, 240, 240);
-            font-size: 12pt;
-        }
-        .main .section1 .search input[type=submit]:hover {
-            background-color: rgb(180, 180, 180);
         }
 
-
+        /*
+        .main .section1 .search{
+            position: relative;
+            width: 300px;
+            display: flex;
+            margin-left: 30px;
+        }
+        
+        .main .section1 .search input {
+            width: 90%;
+            border: 2px solid rgb(50, 50, 50);
+            border-radius: 8px;
+            font-size: 15px;
+            
+        }
+          
+        .main .section1 .search img {
+            position : absolute;
+            width: 20px;
+            top: 5px;
+            margin: 0;
+        }
+        */
 
         .main .section2 {
             position: relative;
@@ -321,7 +331,7 @@
                 <!--                 <div class="menu1"><a class ="a1" href ="">branch</a></div>
                 <div class="menu1"><a class = "a1" href ="">orders</a></div> -->
                 <div class="menu1"><a class="a1" href="/allProduct">products</a></div>
-                <div class="menu1"><a class="a1" href="login">login</a></div>
+                <div class="menu1"><a class="a1" href="/loginform">login</a></div>
 
             </div>
         </nav>
@@ -330,13 +340,13 @@
     <main class="main">
         <section class="section1">
             <div class="logo"></div>
-            <form action="/search" method="get">
             <div class="search">
                 <form action="/search" method="get">
-                    <input type="text" name="search" placeholder="검색어를 입력하세요.">
-                    <input type="submit" value="검색">
+                    <input type="text" placeholder="검색어 입력">
+                    <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+                </form>
             </div>
-            </form>
+
         </section>
         <section class="section2">
             <div class="left">
@@ -359,7 +369,6 @@
                         <%} %>
 
                             <div class="box1">
-
                                 <% for(var i=data.length-1; i>=0; i--) {
                                     var Data = data[i];
                                     %> <div class="box_item1">
@@ -375,7 +384,6 @@
                                             </form>
                                     </div>
                                     <%} %>
-
                             </div>
             </div>
         </section>

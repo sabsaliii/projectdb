@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>최윤서</title>
+   
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap');
+     body{
+        margin: 0;
+        /*font-family : 'gulim', 'gothic';*/
+        position: relative;
+     /*   display: flex;
+        flex-flow: row nowrap ;*/
+     }
+    .header{
+        position: relative;
+        top: 0px;
+        width: 100%;
+        height: 7vh;
+        background-color: rgb(230, 230, 230);
+        /*margin: 0 0 2px 0;*/
+        /*border: 1px solid black;*/
+    }
+    .header .nav{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        top: 0px;
+        margin: 0px auto;
+        width: 95%;
+        background-color:rgb(230, 230, 230);
+        height: 100%;
+        /*border: 1px solid black;*/
+
+    }
+  
+    .header .nav .logo{
+        position: relative;
+        align-items: center;
+        float: left;
+        font-weight: 500;
+        /*background-color: white;*/
+        width: 180px;
+        /*justify-content: space-between;*/
+        /*height: 100%;*/
+        /*border: 1px solid black;*/
+        cursor: pointer;
+
+    }
+    .header .nav .logo a{
+        text-decoration: none;
+        color: black;
+        font-size: 14pt;
+    }
+    .header .nav .logo a:hover{
+        /*text-decoration: none;*/
+        color: royalblue;
+        /*font-size: 14pt;*/
+    }
+   
+    .header .nav .menu{
+        position: relative;
+        /*align-items: flex-end;*/
+        justify-content: flex-end;
+        text-align: right;
+        display: flex;
+        /*background-color: white;*/
+        width: 180px;
+        /*height: 100%;*/
+        /*border: 1px solid black;*/
+        cursor: pointer;
+
+    }
+    
+    .header .nav .menu .menu1{
+        position: relative;
+        align-items: center;
+        float: left;
+        /*background-color: white;*/
+        /*width: 100px;*/
+        margin: 0 15px 0 0;
+        /*height: 100%;*/
+        /*border: 1px solid black;*/
+        cursor: pointer;
+
+    }
+    .header .nav .menu .menu1 .img1{
+        margin: 0;
+        position: relative;
+        width: 25px;
+        height: 25px;
+        bottom: 3px;
+        background-image: url("https://i.postimg.cc/gksLsxBm/pngwing-com.png");
+          /*border: 1px solid black;*/
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+     .a1{
+        text-decoration: none;
+        color: black;
+     }
+     .a1:hover{
+        color: green;
+     }
+   .main{
+        position: relative;
+        display: flex;
+        flex-flow: row nowrap;
+        top: 0px;
+        /*align-items: center;*/
+        width: 100%;
+        min-width: 1280px;
+        min-height: 180vh;
+        /*height: 180%;*/
+        background-color: rgb(230, 230, 230);
+    }
+    .main .nav{
+        position: relative;
+        display: flex;
+        flex-flow: column nowrap;
+        background-color: white;
+        padding: 10px 10px 10px 10px;
+        /*border: 1px solid rgb(200, 200, 200);*/
+        width: 16%;
+        height: 180vh;
+    }
+    .main .nav .menu{
+        width: 100%;
+        /*top: 10px;*/
+        justify-content: center;
+        margin: 5px 0 5px 0 ;
+        align-items: center;
+        text-align: center;
+        font-size: 14pt;
+        padding: 5px 0  0;
+        height: 50px;
+        /*border: 1px solid black;*/
+    }
+    .main .nav .menu .logo{
+        margin: 0 auto;
+        position: relative;
+        width: 210px;
+        text-align: center;
+        height: 100%;
+        /*bottom: 3px;*/
+        background-image: url("https://i.postimg.cc/SNsvQM9v/logo.png");
+          /*border: 1px solid black;*/
+        background-size: contain;
+        background-repeat: no-repeat;
+
+    }
+    .main .nav .menu a{
+        text-decoration: none;
+        /*margin: 10px;*/
+        font-size: 15pt;
+        color: black ;
+    }
+    .main .nav .menu a:hover{
+        color: green;
+    }
+    .main hr{
+        margin: 0;
+        height: 180vh;
+        width: .2vw;
+        border-width: 0;
+        color: rgb(230, 230, 230);
+    }
+    .main .nav .menu_hr{
+         margin: 0 0 15px 0;
+         padding: 0;
+         width: .1vw;
+         border-width: 1px;
+         height: 1px;
+         width: 100%;
+         color: rgb(230, 230, 230);
+         background-color: rgb(230, 230, 230);
+    }
+    .main .section1{
+        position: relative;
+        align-items: center;
+        width: 84%;
+        height: 180vh;
+        padding: 10px 10px 10px 10px;
+        margin: 0px auto;
+        /*border: 1px solid rgb(200, 200, 200);*/
+        background-color: white;
+    }
+    .main .section1 .box1{
+        min-height: 80vh;
+       /* display: flex;
+        flex-flow: row wrap;*/
+        padding: 20px 10px 20px 30px;
+        /*border: 1px solid black;*/
+    }
+    .main .section1 .box1 .box_item1{
+         flex-basis: 100%;
+        /*width: 30%;*/
+        margin: 10px 15px 10px 10px;
+        word-wrap: break-word;
+        /*min-height: 50vh;*/
+        border-radius: 30px;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: start;
+        /*padding: 0 10px 10px 10px;*/
+        background-color: rgb(240, 240, 240);
+        /*border: 1px solid black;*/
+    }
+    .main .section1 .box1 .box_item1 .customer_info{
+        width: 100%;
+        height: 40vh;
+        display: flex;
+        padding: 20px 10px 20px 10px;
+        align-items: center;
+        flex-flow: row nowrap;
+        margin: 0 0 5px 0;
+        /*border: 1px solid black;*/
+    }
+   
+    .main .section1 .box1 .box_item1 .customer_info .item_img1 img{
+        width: 300px;
+        height: 280px;
+        margin: 20px 20px 20px 20px;
+        /*border: 1px solid rgb(100, 100, 100);*/
+        /*margin: 100;*/
+        object-fit: cover;
+    }
+    .main .section1 .box1 .box_item1 .customer_info .item1{
+        border: 1px solid black;
+        font-size: 14pt;
+        word-wrap: break-word;
+        width: 600px;
+    }
+    .main .section1 .box1 .box_item1 .customer_info .item1 li{
+        margin: 0 0 7px 0;
+    }
+   /* .main .section1 .box1 .box_item1 .item_btn1 input[type=submit]{
+        width: 200px;
+        height: 35px;
+        border-radius: 100px;
+        background-color: white;
+    }*/
+     .main .section1 .box1 .box_item1 .buy_product{
+        /*border: 1px solid black;*/
+        width: 100%;
+        min-height: 30vh;
+        padding: 10px 10px 10px 10px;
+        /*margin: 0 auto;*/
+     }
+      .main .section1 .box1 .box_item1 .buy_product hr{
+        margin: 0 0 0 25px;
+        background-color: rgb(192, 192,192);
+        /*padding: 0 0 0 25px;*/
+        height: 1px;
+        width: 95%;
+    }
+    .main .section1 .box1 .box_item1 .buy_product .title{
+        /*border: 1px solid black;*/
+        padding: 30px 0 20px 40px;
+        font-size: 20pt;
+        font-weight: 700;
+    }
+    .main .section1 .box1 .box_item1 .buy_product .item1{
+        /*border: 1px solid black;*/
+        width: 95%;
+        padding: 0 0 0 25px;
+
+    }
+    .main .section1 .box1 .box_item1 .buy_product .item1 table{
+        border: none;
+        width: 100%;
+        /*padding: 10px 30px 10px 30px;*/
+        border-collapse: collapse;
+        /*height: 100%;*/
+
+    }
+     .main .section1 .box1 .box_item1 .buy_product .item1  tr, td, th{
+        /*margin: 5px 5px 5px 5px;*/
+        padding: 10px 30px 10px 30px;
+        text-align: center;
+        border-top: 1px solid black;
+    }
+    .footer {
+            position: relative;
+            top: 0px;
+            width: 100%;
+            min-width: 1280px;
+            height: 5vh;
+            background-color: rgb(92,92,92);
+        }
+    
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo"><a href="/">윤 & 현 컴퍼니</a></div>
+            <div class="menu">
+                <div class="menu1"><div class="img1"></div></div>
+                <div class="menu1"><a class ="a1" href ="">logout</a></div>
+
+              
+
+           </div>
+        </nav>
+
+    </header>
+    <!-- <nav class="nav">네브바</nav> -->
+    <main class="main">
+       <nav class="nav">
+            <div class="menu"> <div class="logo"></div> </div>
+            <br>
+           <div class="menu"><a href="/admin_branch"> 지점 관리</a></div>
+           <hr class="menu_hr">
+           <div class="menu"><a href="/admin"> 담당자 관리</a></div>
+           <hr class="menu_hr">
+           <div class="menu"><a href="/admin_orders"> 주문 관리</a></div>
+           <hr class="menu_hr">
+           <div class="menu"><a href="/admin_warehouse"> 창고 관리</a></div>
+           <hr class="menu_hr">
+           <div class="menu"><a href=""> 발주 관리</a></div>
+           <hr class="menu_hr">
+       </nav>
+       <hr>
+        <section class="section1">
+            <div class="box1">
+                <div class="box_item1">
+                    <div class="customer_info">
+                       <div class="item_img1"><img src="https://emojigraph.org/media/openmoji/person-light-skin-tone-bald_1f9d1-1f3fb-200d-1f9b2.png"></div>
+                       <div class="item1">
+                           <ul>
+                               <li><span style="font-weight: 600;">Name  : </span><%=data.FIRST_NAME%>&nbsp;<%=data.LAST_NAME%></li>
+                               <li><span style="font-weight: 600;">Email  :  </span> <%=data.EMAIL%></li>
+                               <li><span style="font-weight: 600;">Phone  :  </span> <%=data.PHONE%></li>
+                               <li><span style="font-weight: 600;">branch  :  </span> <%=data.NAME%></li>
+                               <li><span style="font-weight: 600;">Address  :  </span> <%=data.ADDRESS%> </li>
+                               <li><span style="font-weight: 600;">WebSite  :  </span> <%=data.WEBSITE%></li>
+                               <li><span style="font-weight: 600;">Credit Limit  : </span> <%=data.CREDIT_LIMIT%></li>
+                           </ul>
+                       </div>
+                    </div>
+                    
+                   <div class="buy_product">
+                    <hr>
+                       <div class="title">구매 내역</div>
+                       <div class="item1">
+                           <table>
+                                <tr>
+                                    <th></th>
+                                    <th>구매 제품</th>
+                                    <th>배송상태</th>
+                                    <th>주문날짜</th>
+                                    <th>수량</th>
+                                    <th>결제금액</th>
+                                </tr>
+                               <tr>
+                                   <td>1</td>
+                                   <td>Asus MAXIMUS IX CODE</td>
+                                   <td>Pending</td>
+                                   <td>15-08-17</td>
+                                   <td>52</td>
+                                   <td>892</td>
+                               </tr>
+                                <tr>
+                                   <td>2</td>
+                                   <td>Asus MAXIMUS IX CODE</td>
+                                   <td>Pending</td>
+                                   <td>15-08-17</td>
+                                   <td>52</td>
+                                   <td>892</td>
+                               </tr>
+                              
+                           </table>
+                       </div>
+                   </div>
+                </div>
+
+            </div>
+        
+        </section>
+      
+        
+    </main>
+    <footer class="footer">
+
+    </footer>
+
+</body>
+
+</html>

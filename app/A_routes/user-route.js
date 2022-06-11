@@ -9,4 +9,6 @@ module.exports=router=>{
 
     router.get('/loginform',UserController.getLoginPage);
     router.post('/login',UserController.login);
+
+    router.post('/order/:productId',UserController.order);
 }

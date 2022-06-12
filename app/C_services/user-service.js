@@ -5,8 +5,8 @@ const query = require('../D_queries/user-query');
 exports.order = async (productID,body) => {
     try {
         let connection = await pool.getConnection('ys');
-        let connection2 = await pool.getConnection('ys');
-        let connection3 = await pool.getConnection('ys');
+        // let connection2 = await pool.getConnection('ys');
+        // let connection3 = await pool.getConnection('ys');
         
         // const order_date = await connection3.execute(query.getDate);
         var newDate = new Date();
@@ -19,8 +19,9 @@ exports.order = async (productID,body) => {
         const quantity = body.quantity;
         const status ='Pending';
         // console.log(order_date.rows[0].SYSDATE);
+        // console.log('여기까진 오냐?');
         const customer = await connection.execute(query.findCustomerId,[branch_name,email]);
-        console.log(customer.rows.length);
+        // console.log(customer.rows.length);
         let customerID;
         // console.log(customerID);
         if(customer.rows.length == 0){
@@ -29,9 +30,7 @@ exports.order = async (productID,body) => {
             customerID = customer.rows[0].CUSTOMER_ID;
         }
         const result = await connection.execute(query.order,[customerID,status,order_date]);
-        console.log(result);
         const result2 =await connection.execute(query.order_item,[productID,quantity,price]);
-        console.log(result2.rowsAffected);
         if(result.rowsAffected && result2.rowsAffected){
             console.log(':: Service - order success ::');
             return 1;

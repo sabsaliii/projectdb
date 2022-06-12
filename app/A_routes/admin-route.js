@@ -9,6 +9,9 @@ module.exports=router=>{
 
     router.get('/admin',AdminController.getCustomers);
     router.get('/admin/customerDetail/:contactId',AdminController.getCustomer);
-    
+    router.get('/admin_warehouse',AdminController.getWarehouses);
+    router.get('/warehouseDetail/:warehouseId',AdminController.getWarehouse);
+    router.get('/admin_branch',AdminController.getBranches);
+    router.get('/branchDetail/:customerId',AdminController.getBranch);
 
-}
+};

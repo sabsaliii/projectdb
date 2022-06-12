@@ -19,6 +19,8 @@ exports.getProductDetail = async (req, res) => { //상품 하나 보기
     // console.log(productID);
     const row = await ProductService.getProductDetail(productID);
     console.log(':: Controller - getProductDetail success ::')
+
+    //return res.render('product_detailed',{ data : row });
     return res.render('product_detailed2',{ data : row });
   } catch (err) {
     return res.status(500).json(err);

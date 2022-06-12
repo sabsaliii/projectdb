@@ -12,7 +12,10 @@ async function init() {
         user          : dbConfig.user,
         password      : dbConfig.password,               // mypw contains the hr schema password
         connectString : dbConfig.connectString,
-        poolAlias: 'ys'
+        poolAlias: 'ys',
+        poolMin : 10,
+        poolMax : 50
+
       });
       console('pool.js')
      // const connect = oracledb.getConnection('hrpool')

@@ -251,7 +251,7 @@
 <body>
     <header class="header">
         <nav class="nav">
-            <div class="logo"><a href="project_main.html">윤 & 현 컴퍼니</a></div>
+            <div class="logo"><a href="/">윤 & 현 컴퍼니</a></div>
             <div class="menu">
                 <div class="menu1"><div class="img1"></div></div>
                 <div class="menu1"><a class ="a1" href ="">logout</a></div>
@@ -267,13 +267,13 @@
        <nav class="nav">
             <div class="menu"> <div class="logo"></div> </div>
             <br>
-           <div class="menu"><a href=""> 지점 관리</a></div>
+           <div class="menu"><a href="/admin_branch"> 지점 관리</a></div>
            <hr class="menu_hr">
-           <div class="menu"><a href="admin.html"> 담당자 관리</a></div>
+           <div class="menu"><a href="/admin"> 담당자 관리</a></div>
            <hr class="menu_hr">
-           <div class="menu"><a href="admin_orders.html"> 주문 관리</a></div>
+           <div class="menu"><a href="/admin_orders"> 주문 관리</a></div>
            <hr class="menu_hr">
-           <div class="menu"><a href=""> 창고 관리</a></div>
+           <div class="menu"><a href="/admin_warehouse"> 창고 관리</a></div>
            <hr class="menu_hr">
            <div class="menu"><a href=""> 발주 관리</a></div>
            <hr class="menu_hr">
@@ -283,38 +283,59 @@
             <div class="title">창고 관리</div>
             <div class="box1">
                 <div class="box_item1">
-                    <div class="item_img1"><img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"></div>
-                    <div class="item_name">미국</div>
-                    <div class="item_store_name">Southlake, Texas</div>
-                    <form action="admin_warehouse_detailed.html">
+                    <div class="item_img1"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Australia_%28converted%29.svg/250px-Flag_of_Australia_%28converted%29.svg.png"></div>
+                    <div class="item_name"><%=data[5].WAREHOUSE_NAME%></div>
+                    <div class="item_store_name">오스트레일리아</div>
+                    <form action="/warehouseDetail/<%=data[5].WAREHOUSE_ID%>" method="get">
                     <div class="item_btn1"><input type="submit" value="창고 정보 열람"></div>
                     </form>
                 </div>
                  <div class="box_item1">
-                    <div class="item_img1"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Australia_%28converted%29.svg/250px-Flag_of_Australia_%28converted%29.svg.png"></div>
-                    <div class="item_name">오스트레일리아</div>
-                    <div class="item_store_name">Yoon & Hyun Company</div>
-                    <div class="item_btn1"><input type="submit" value="창고 정보 열람"></div>
-                </div>
-                 <div class="box_item1">
                     <div class="item_img1"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Canada_%28Pantone%29.svg/2560px-Flag_of_Canada_%28Pantone%29.svg.png"></div>
-                    <div class="item_name">캐나다</div>
-                    <div class="item_store_name">Yoon & Hyun Company</div>
-                    <div class="item_btn1"><input type="submit" value="창 정보 열람"></div>
+                    <div class="item_name"><%=data[4].WAREHOUSE_NAME%></div>
+                    <div class="item_store_name">캐나다</div>
+                    <form action="/warehouseDetail/<%=data[4].WAREHOUSE_ID%>" method="get">
+                        <div class="item_btn1"><input type="submit" value="창고 정보 열람"></div>
+                    </form>
                 </div>
+
+                <% for(var i=0; i< 4; i++) {
+                    var Data = data[i];
+                    %>
+                <div class="box_item1">
+                    <div class="item_img1"><img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"></div>
+                    <div class="item_name"><%=Data.WAREHOUSE_NAME%></div>
+                    <div class="item_store_name">미국</div>
+                    <form action="/warehouseDetail/<%=Data.WAREHOUSE_ID%>" method="get">
+                    <div class="item_btn1"><input type="submit" value="창고 정보 열람"></div>
+                    </form>
+    
+                </div>
+                <%} %>
                  <div class="box_item1">
                     <div class="item_img1"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/1920px-Flag_of_the_People%27s_Republic_of_China.svg.png"></div>
-                    <div class="item_name">중국</div>
-                    <div class="item_store_name">Yoon & Hyun Company</div>
-                    <div class="item_btn1"><input type="submit" value="창 정보 열람"></div>
+                    <div class="item_name"><%=data[7].WAREHOUSE_NAME%></div>
+                    <div class="item_store_name">중국</div>
+                    <form action="/warehouseDetail/<%=data[7].WAREHOUSE_ID%>" method="get">
+                        <div class="item_btn1"><input type="submit" value="창고 정보 열람"></div>
+                    </form>
                 </div>
                 <div class="box_item1">
                     <div class="item_img1"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/1920px-Flag_of_India.svg.png"></div>
-                    <div class="item_name">인도</div>
-                    <div class="item_store_name">Yoon & Hyun Company</div>
-                    <div class="item_btn1"><input type="submit" value="창 정보 열람"></div>
+                    <div class="item_name"><%=data[8].WAREHOUSE_NAME%></div>
+                    <div class="item_store_name">인도</div>
+                    <form action="/warehouseDetail/<%=data[8].WAREHOUSE_ID%>" method="get">
+                        <div class="item_btn1"><input type="submit" value="창고 정보 열람"></div>
+                    </form>
                 </div>
-
+                <div class="box_item1">
+                    <div class="item_img1"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/1920px-Flag_of_Mexico.svg.png"></div>
+                    <div class="item_name"><%=data[6].WAREHOUSE_NAME%></div>
+                    <div class="item_store_name">멕시코</div>
+                    <form action="/warehouseDetail/<%=data[6].WAREHOUSE_ID%>" method="get">
+                        <div class="item_btn1"><input type="submit" value="창고 정보 열람"></div>
+                    </form>
+                </div>
             </div>
         
         </section>

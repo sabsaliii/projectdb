@@ -9,6 +9,7 @@ module.exports=router=>{
 
     router.get('/loginform',UserController.getLoginPage);
     router.post('/login',UserController.login);
+    router.get('/logout',UserController.logout);
 
     router.post('/order/:productId',UserController.order);
 }

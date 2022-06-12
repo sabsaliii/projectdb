@@ -4,6 +4,7 @@ module.exports.getCustomers = async (req,res)=>{
     try {
         const rows = await AdminService.getCustomers();
         console.log(':: Controller - getCustomers success ::')
+      
         return res.render('admin', { data: rows });
       } catch (err) {
         return res.status(500).json(err);

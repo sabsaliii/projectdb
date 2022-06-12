@@ -7,7 +7,7 @@ exports.getCustomers = async () => {
         let connection = await pool.getConnection('ys');
         const data = await connection.execute(query.getCustomers);
         console.log(':: Service - getCustomers success ::')
-        console.log(data.rows)
+        // console.log(data.rows)
         await connection.close()
         return data.rows;
     } catch (err) {

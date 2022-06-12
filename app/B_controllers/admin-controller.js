@@ -1,4 +1,5 @@
 const AdminService = require('../C_services/admin-service')
+const url = require('url');
 
 module.exports.getCustomers = async (req,res)=>{
     try {
@@ -61,4 +62,34 @@ exports.getBranch = async (req, res)=>{
     } catch (err) {
       return res.status(500).json(err);
     }
+};
+exports.searchBranch = async (req,res) =>{
+  try {
+
+    console.log(url.parse(req.url, true).query);
+    const key = url.parse(req.url, true).query.search;
+    console.log(key)
+    if(key == ""){
+      return res.send('<script>alert("검색할 단어를 입력해주세요.");location.href="/admin_branch";</script>');
+    }
+    const rows = await AdminService.searchBranch(key);
+    console.log(':: Controller - searchBranch success ::')
+    return res.render('branch_search',{ data : rows });
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+};
+exports.searchAdmin = async (req,res) =>{
+  try {
+    const key = url.parse(req.url, true).query.search;
+    console.log(key)
+    if(key == ""){
+      return res.send('<script>alert("검색할 단어를 입력해주세요.");location.href="/admin";</script>');
+    }
+    const rows = await AdminService.searchAdmin(key);
+    console.log(':: Controller - searchAdmin success ::')
+    return res.render('admin_search',{ data : rows });
+  } catch (err) {
+    return res.status(500).json(err);
+  }
 };

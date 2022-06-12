@@ -14,4 +14,7 @@ module.exports=router=>{
     router.get('/admin_branch',AdminController.getBranches);
     router.get('/branchDetail/:customerId',AdminController.getBranch);
 
+    router.get('/search_branch',AdminController.searchBranch);
+    router.get('/search_admin',AdminController.searchAdmin);
+
 };

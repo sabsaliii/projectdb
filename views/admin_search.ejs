@@ -233,7 +233,6 @@
     .main .section1 .search input[type=submit]:hover {
         background-color: rgb(220, 220, 220);
     }
-
     .main .section1 .box1{
         min-height: 80vh;
         display: flex;
@@ -295,9 +294,6 @@
             <div class="menu">
                 <div class="menu1"><div class="img1"></div></div>
                 <div class="menu1"><a class ="a1" href ="">logout</a></div>
-
-              
-
            </div>
         </nav>
 
@@ -320,17 +316,26 @@
        </nav>
        <hr>
         <section class="section1">
-            <div class="title">담당자 관리</div>
+            <% if(data.length){%>
+                <div class="title">
+                    총 <%=data.length%>개의 검색 결과가 있습니다.
+                </div>
+            <%}else { %>
+                <div class="title">검색된 상품이 없습니다.</div>
+            <%} %>
+
             <form action="/search_admin" method="get">
                 <div class="search">
                         <input type="text" name="search" placeholder="검색어를 입력하세요.">
                         <input type="submit" value="">
                 </div><div style="clear:both"></div>
             </form>
+
             <div class="box1">
-                    <% for(var i=data.length-1; i>=0; i--) {
-                        var Data = data[i];
-                        %>  <div class="box_item1">
+                <% for(var i=data.length-1; i>=0; i--) {
+                    var Data = data[i];
+                %> <div class="box_item1">
+                    <%=data.length-i%>
                     <div class="item_img1"><img src="https://i.postimg.cc/gksLsxBm/pngwing-com.png"></div>
                     <div class="item_name"><%=Data.FIRST_NAME%>&nbsp;<%=Data.LAST_NAME%></div>
                     <div class="item_store_name"><%=Data.NAME%></div>

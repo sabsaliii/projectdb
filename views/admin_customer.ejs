@@ -263,6 +263,11 @@
         font-size: 20pt;
         font-weight: 700;
     }
+    .main .section1 .box1 .box_item1 .buy_product .no{
+        /*border: 1px solid black;*/
+        padding: 30px 0 20px 40px;
+        font-size: 15pt;
+    }
     .main .section1 .box1 .box_item1 .buy_product .item1{
         /*border: 1px solid black;*/
         width: 95%;
@@ -333,20 +338,23 @@
                        <div class="item_img1"><img src="https://emojigraph.org/media/openmoji/person-light-skin-tone-bald_1f9d1-1f3fb-200d-1f9b2.png"></div>
                        <div class="item1">
                            <ul>
-                               <li><span style="font-weight: 600;">Name  : </span><%=data.FIRST_NAME%>&nbsp;<%=data.LAST_NAME%></li>
-                               <li><span style="font-weight: 600;">Email  :  </span> <%=data.EMAIL%></li>
-                               <li><span style="font-weight: 600;">Phone  :  </span> <%=data.PHONE%></li>
-                               <li><span style="font-weight: 600;">branch  :  </span> <%=data.NAME%></li>
-                               <li><span style="font-weight: 600;">Address  :  </span> <%=data.ADDRESS%> </li>
-                               <li><span style="font-weight: 600;">WebSite  :  </span> <%=data.WEBSITE%></li>
-                               <li><span style="font-weight: 600;">Credit Limit  : </span> <%=data.CREDIT_LIMIT%></li>
+                               <li><span style="font-weight: 600;">Name  : </span><%=data[0].FIRST_NAME%>&nbsp;<%=data[0].LAST_NAME%></li>
+                               <li><span style="font-weight: 600;">Email  :  </span> <%=data[0].EMAIL%></li>
+                               <li><span style="font-weight: 600;">Phone  :  </span> <%=data[0].PHONE%></li>
+                               <li><span style="font-weight: 600;">branch  :  </span> <%=data[0].NAME%></li>
+                               <li><span style="font-weight: 600;">Address  :  </span> <%=data[0].ADDRESS%> </li>
+                               <li><span style="font-weight: 600;">WebSite  :  </span> <%=data[0].WEBSITE%></li>
+                               <li><span style="font-weight: 600;">Credit Limit  : </span> <%=data[0].CREDIT_LIMIT%></li>
                            </ul>
                        </div>
                     </div>
                     
                    <div class="buy_product">
                     <hr>
-                       <div class="title">구매 내역</div>
+                    <div class="title">구매 내역</div>
+                       <% if(data.length == 1){%>
+                        <div class="no">구매한 상품이 없습니다.</div>
+                        <%}else { %>
                        <div class="item1">
                            <table>
                                 <tr>
@@ -357,25 +365,30 @@
                                     <th>수량</th>
                                     <th>결제금액</th>
                                 </tr>
+                                <% for(var i=0; i<=data.length-1; i++) {
+                                    var Data = data[i];
+                                    var date=Data.ORDER_DATE;
+                                    var year = date.getFullYear();
+                                    var month = ('0' + (date.getMonth() + 1)).slice(-2);
+                                    var day = ('0' + date.getDate()).slice(-2);
+                                    var hours = ('0' + date.getHours()).slice(-2);
+                                    var minutes = ('0' + date.getMinutes()).slice(-2);
+                                    var seconds = ('0' + date.getSeconds()).slice(-2);
+                                
+                                    var dateString = year + '-' + month  + '-' + day +" " + hours + ':' + minutes  + ':' + seconds; 
+                                    %>
                                <tr>
-                                   <td>1</td>
-                                   <td>Asus MAXIMUS IX CODE</td>
-                                   <td>Pending</td>
-                                   <td>15-08-17</td>
-                                   <td>52</td>
-                                   <td>892</td>
+                                   <td><%=i+1%></td>
+                                   <td><a href="/productDetail/<%=Data.PRODUCT_ID%>"><%=Data.PRODUCT_NAME%></a></td>
+                                   <td><%=Data.STATUS%></td>
+                                   <td><%=dateString%></td>
+                                   <td><%=Data.QUANTITY%></td>
+                                   <td><%=Data.UNIT_PRICE%></td>
                                </tr>
-                                <tr>
-                                   <td>2</td>
-                                   <td>Asus MAXIMUS IX CODE</td>
-                                   <td>Pending</td>
-                                   <td>15-08-17</td>
-                                   <td>52</td>
-                                   <td>892</td>
-                               </tr>
-                              
+                               <%} %> 
                            </table>
                        </div>
+                       <%} %>
                    </div>
                 </div>
 

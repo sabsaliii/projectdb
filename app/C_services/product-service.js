@@ -38,9 +38,10 @@ exports.search = async (key) => {
     try {
         let connection = await pool.getConnection('ys');
         key = '%'+key+'%';
+        //console.log(key);
         const lowerKey = key.toUpperCase();
         const upperKey =key.toLowerCase();
-        // console.log(lowerKey,upperKey);
+        //console.log(lowerKey,upperKey);
         const data = await connection.execute(query.search,[key]);
         
         console.log(':: Service - search success ::')

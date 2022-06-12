@@ -1,13 +1,13 @@
 const query = require('../D_queries/admin-query')
 const pool = require('oracledb');
-const { anySeries } = require('async');
+
 
 exports.getCustomers = async () => {
     try {
         let connection = await pool.getConnection('ys');
         const data = await connection.execute(query.getCustomers);
         console.log(':: Service - getCustomers success ::')
-        console.log(data.rows)
+        // console.log(data.rows)
         await connection.close()
         return data.rows;
     } catch (err) {

@@ -1,7 +1,7 @@
 const oracledb = require('oracledb');
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT
 oracledb.autoCommit = true
-oracledb.initOracleClient({ libDir: 'C:\\instantclient_21_3' });
+oracledb.initOracleClient({ libDir: 'instantclient_21_3' });
 
 const dbConfig = require('../F_config/DBconfig.json');
 
@@ -12,7 +12,10 @@ async function init() {
         user          : dbConfig.user,
         password      : dbConfig.password,               // mypw contains the hr schema password
         connectString : dbConfig.connectString,
-        poolAlias: 'ys'
+        poolAlias: 'ys',
+        poolMin : 10,
+        poolMax : 50
+
       });
       console('pool.js')
      // const connect = oracledb.getConnection('hrpool')

@@ -1,8 +1,10 @@
 const http = require('http');
 const path = require('path');
 const express = require('express');
+const cookieParser=require('cookie-parser');
 const pool = require('./app/E_database/pool')
 const app = express()
+
 
 init = async (req, res) => {
 await pool.init;
@@ -10,8 +12,10 @@ await pool.init;
 
 const server = http.createServer(app);
 app.use(express.json());
+app.use(cookieParser());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
+
 
 app.set('views',"./views");
 app.use(express.static(path.join(__dirname,'public')));

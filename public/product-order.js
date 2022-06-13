@@ -47,3 +47,26 @@ function view_form(){
 }
 
    
+function change2(t){
+        var opt = t
+        var min_qty = 1;
+        var this_qty = document.getElementById('quantity');
+        var current_qty =parseInt(this_qty.value);
+        var max_qty = 200; 
+        if(opt=='m'){
+          current_qty -= 1;
+          if(current_qty<min_qty){
+            alert("수량은 1개 이상 입력해 주십시오.");
+            current_qty=1;
+            return;
+            }
+          }
+          else if(opt=='p'){
+            current_qty += 1;
+           
+          }else{
+              alert('noting');
+          } 
+       
+          document.getElementById('quantity').value = current_qty;
+   }    

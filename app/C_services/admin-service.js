@@ -31,10 +31,12 @@ exports.getWarehouses = async () => {
 exports.getWarehouse = async (warehouseID) => {
     try{
         let connection = await pool.getConnection('ys');
-        const data = await connection.execute(query.getWarehouse,[warehouseID]);
+       // const data = await connection.execute(query.getWarehouse,[warehouseID]);
+       const data = await connection.execute(query.getWarehouseDetail,[warehouseID]);
         console.log(':: Service - getWarehouse success ::')
-        console.log(data.rows[0])
-        await connection.close()
+        // console.log(data.rows[0]);
+        // console.log(data.rows);
+        await connection.close();
         return data.rows;
     }catch(err){
         console.log(err);
@@ -136,3 +138,44 @@ exports.searchAdmin = async (key) => {
         throw Error(err);
     }
 };
+
+exports.send = async (warehouseID,productID) =>{
+        try{
+            // console.log(warehouseID,productID);
+            // console.log(':: Service - send success ::');
+            // let connection = await pool.getConnection('ys');
+           
+            // const data = await connection.execute(query.send,[warehouseID,productID]);
+            // console.log(data);
+           
+            // await connection.close()
+            // return data;
+        }catch (err){
+            console.log(err);
+            throw Error(err);
+        }
+    };
+    
+    exports.borderOrders = async (body,employeeID) =>{
+        try{
+            let connection = await pool.getConnection('ys');
+            const warehouseID =body.warehouse_id;
+            const productID = body.product_id;
+            const quantity = body.quantity;
+            const newDate = new Date();
+            const orderDate = newDate.toFormat('YY-MM-DD HH:MM:SS');
+            // console.log(employeeID, warehouseID, quantity,productID,orderDate);
+            const data = await connection.execute(query.borderOrders,[productID,employeeID,quantity,warehouseID,orderDate]);
+            // console.log(data);
+            if(data.rowsAffected===1){
+            console.log(':: Service - borderorder success ::')
+            await connection.close();
+                return 1;
+            }else{
+                return -1;   
+            }
+        }catch (err){
+            console(err);
+            throw Error(err);
+        }
+    };

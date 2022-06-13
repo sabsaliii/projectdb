@@ -71,4 +71,17 @@ exports.loginState = (req,res,next)=>{
     }
 }
 
-
+exports.getCookiePayload =(req,res)=>{
+        try{
+            const accessToken = jwt.verify( req.cookies.accessToken, process.env.ACCESS_TOKEN_SECRET);
+            const refreshToken = jwt.verify(req.cookies.refreshToken, process.env.REFRESH_TOKEN_SECRET);
+            // console.log(refreshToken.user_id,accessToken.user_id);
+            if(refreshToken.user_id === accessToken.user_id){
+                return accessToken.user_id;
+            }else{
+                return -1;
+            }
+        }catch (err){
+            return res.send('<script>alert(\'잘못된 접근입니다.\'); location.href="/"</script>');
+        }
+};

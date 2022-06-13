@@ -19,4 +19,7 @@ module.exports=router=>{
     router.get('/search_branch',AdminController.searchBranch);
     router.get('/search_admin',AdminController.searchAdmin);
 
+    router.get('/admin/send/:warehouseId',AdminController.send);
+    router.post('/admin/borderorders',AdminController.borderOrders);
+
 };

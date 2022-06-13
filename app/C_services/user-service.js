@@ -65,3 +65,16 @@ exports.login = async (body, res) => {
         throw Error(err);
     }
 };
+
+exports.getEmployeeId = async (email) =>{
+        try{
+            let connection = await pool.getConnection('ys');
+            
+            const employeeID = await connection.execute(query.getEmployeeId, [email]);
+            console.log(':: Service - getEmployeeId success ::')
+            return employeeID.rows[0].EMPLOYEE_ID;
+        }catch (err){
+            console.log(err);
+            throw Error(err);
+        }
+};

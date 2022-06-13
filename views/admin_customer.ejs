@@ -327,7 +327,7 @@
            <hr class="menu_hr">
            <div class="menu"><a href="/admin_warehouse"> 창고 관리</a></div>
            <hr class="menu_hr">
-           <div class="menu"><a href=""> 발주 관리</a></div>
+           <div class="menu"><a href="/info-list"> 발주 관리</a></div>
            <hr class="menu_hr">
        </nav>
        <hr>
@@ -343,7 +343,7 @@
                                <li><span style="font-weight: 600;">Phone  :  </span> <%=data[0].PHONE%></li>
                                <li><span style="font-weight: 600;">branch  :  </span> <%=data[0].NAME%></li>
                                <li><span style="font-weight: 600;">Address  :  </span> <%=data[0].ADDRESS%> </li>
-                               <li><span style="font-weight: 600;">WebSite  :  </span> <%=data[0].WEBSITE%></li>
+                               <li><span style="font-weight: 600;">WebSite  :  </span> <a href= '#'><%=data[0].WEBSITE%></a></li>
                                <li><span style="font-weight: 600;">Credit Limit  : </span> <%=data[0].CREDIT_LIMIT%></li>
                            </ul>
                        </div>
@@ -383,7 +383,7 @@
                                    <td><%=Data.STATUS%></td>
                                    <td><%=dateString%></td>
                                    <td><%=Data.QUANTITY%></td>
-                                   <td><%=Data.UNIT_PRICE%></td>
+                                   <td><%=Data.UNIT_PRICE * Data.QUANTITY%></td>
                                </tr>
                                <%} %> 
                            </table>

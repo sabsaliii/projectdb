@@ -94,3 +94,13 @@ exports.searchAdmin = async (req,res) =>{
     return res.status(500).json(err);
   }
 };
+module.exports.getInfo = async (req,res)=>{
+  try {
+      const rows = await AdminService.getInfo();
+      console.log(':: Controller - getInfo success ::')
+    
+      return res.render('info-list', { data: rows });
+    } catch (err) {
+      return res.status(500).json(err);
+    }
+}

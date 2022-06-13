@@ -18,4 +18,6 @@ module.exports=router=>{
     router.get('/search_branch',AdminController.searchBranch);
     router.get('/search_admin',AdminController.searchAdmin);
 
+    router.get('/info-list',AdminController.getInfo);
+
 };

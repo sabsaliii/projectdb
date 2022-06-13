@@ -122,3 +122,16 @@ exports.searchAdmin = async (key) => {
         throw Error(err);
     }
 };
+exports.getInfo = async () => {
+    try {
+        let connection = await pool.getConnection('ys');
+        const data = await connection.execute(query.getInfo);
+        console.log(':: Service - getInfo success ::')
+        // console.log(data.rows)
+        await connection.close()
+        return data.rows;
+    } catch (err) {
+        console.log(err);
+        throw Error(err);
+    }
+};

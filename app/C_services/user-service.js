@@ -50,7 +50,11 @@ exports.login = async (body, res) => {
             const userHashPW = crypto.createHash('sha512').update(userPW + salt.rows[0].SALT).digest('hex');
             if (dbUserPW.rows[0].USER_PASSWORD == userHashPW) {
                 console.log('비밀번호 일치');
-                return 0;
+                const jobTitle = await connection.execute(query.getJobTitle,[userID]);
+                // console.log(jobTitle);
+                const role = await checkRole(jobTitle.rows[0].JOB_TITLE);
+                console.log(role);
+                return role;
             } else {
                 console.log('비밀번호 불일치');
                 return -1;
@@ -65,6 +69,20 @@ exports.login = async (body, res) => {
         throw Error(err);
     }
 };
+
+checkRole = async (jobTitle) =>{
+ try{
+    console.log(jobTitle);
+    if(jobTitle ==='President' || jobTitle ==='Administration Assistant'||jobTitle==='Administration Vice President'){
+        return 'admin';
+    }else{
+        return 'employee';
+    }
+ }  catch(err){
+    console.log(err);
+    throw Error(err);
+ } 
+}
 
 exports.getEmployeeId = async (email) =>{
         try{

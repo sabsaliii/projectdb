@@ -70,3 +70,77 @@ function change2(t){
        
           document.getElementById('quantity').value = current_qty;
    }    
+
+
+   function exportTableToCsv(tableId, filename) {
+    if (filename == null || typeof filename === undefined) { filename = tableId; }
+    filename += '.csv';
+
+    const BOM = '\uFEFF';
+
+    const table = document.getElementById(tableId);
+    let csvString = BOM;
+    for (let rowCnt = 0; rowCnt < table.rows.length; rowCnt++) { //행
+      
+      const rowData = table.rows[rowCnt].cells;
+      console.log(rowData);
+      for (let colCnt = 0; colCnt < rowData.length-3; colCnt++) { //열
+        // let columnData = rowData[colCnt].innerHTML;
+        let columnData = rowData[colCnt].innerText;
+        if (columnData == null || columnData.length === 0) {
+          columnData = ''.replace(/"/g, '""');  // escape double quotes
+        } else {
+          columnData = columnData.toString().replace(/"/g, '""'); // escape double quotes
+        }
+        csvString = `${csvString}"${columnData}",`; //쉼표로 구분, 열 당 하나씩 값 넣음
+      }
+    //   csvString = csvString.substring(0, csvString.length - 1);
+      csvString += '\r\n'; //줄바꿈
+    }
+    // csvString = csvString.substring(0, csvString.length - 1); // 열 당 하나씩 값 넣어줌
+
+    // Deliberate 'false', see comment below
+    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+      var blob = new Blob([decodeURIComponent(csvString)], {
+        type: 'text/csv;charset=utf8',
+      });
+
+      // Crashes in IE 10, IE 11 and Microsoft Edge
+      // See MS Edge Issue #10396033: https://goo.gl/AEiSjJ
+      // Hence, the deliberate 'false'
+      // This is here just for completeness
+      // Remove the 'false' at your own risk
+      window.navigator.msSaveOrOpenBlob(blob, filename);
+    } else if (window.Blob && window.URL) {
+      // HTML5 Blob
+      var blob = new Blob([csvString], { type: 'text/csv;charset=utf8' });
+      var csvUrl = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.setAttribute('style', 'display:none');
+      a.setAttribute('href', csvUrl);
+      a.setAttribute('download', filename);
+      document.body.appendChild(a);
+
+      a.click();
+      a.remove();
+    } else {
+      // Data URI
+      const csvData = `data:application/csv;charset=utf-8,${encodeURIComponent(csvString)}`;
+      var blob = new Blob([csvString], { type: 'text/csv;charset=utf8' });
+      var csvUrl = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.setAttribute('style', 'display:none');
+      a.setAttribute('target', '_blank');
+      a.setAttribute('href', csvData);
+      a.setAttribute('download', filename);
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+}
+
+  $(function () {
+    // Apply the plugin 
+    $('#table').excelTableFilter();
+  });
+     

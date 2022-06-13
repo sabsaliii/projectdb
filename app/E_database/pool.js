@@ -1,7 +1,7 @@
 const oracledb = require('oracledb');
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT
 oracledb.autoCommit = true
-oracledb.initOracleClient({ libDir: 'C:\\instantclient_21_3' });
+oracledb.initOracleClient({ libDir:  '../instantclient_21_3' });
 
 const dbConfig = require('../F_config/DBconfig.json');
 

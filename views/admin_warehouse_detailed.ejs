@@ -92,7 +92,7 @@
         width: 25px;
         height: 25px;
         bottom: 3px;
-        background-image: url("https://postfiles.pstatic.net/MjAyMjA2MDNfODIg/MDAxNjU0MjY1NjM3MTYy.GxWUeMQVJzxRpa8msT8t91s-iMtVndrmDhE7hWiwvxQg.8xG7WYRYRtpz6uKCQbqp-NciF9tPhKOYIKHnImWKiqUg.PNG.cys4189/pngwing.com.png?type=w966");
+        background-image: url("https://i.postimg.cc/gksLsxBm/pngwing-com.png");
           /*border: 1px solid black;*/
         background-size: contain;
         background-repeat: no-repeat;
@@ -145,7 +145,7 @@
         text-align: center;
         height: 100%;
         /*bottom: 3px;*/
-        background-image: url("logo.png");
+        background-image: url("https://i.postimg.cc/SNsvQM9v/logo.png");
           /*border: 1px solid black;*/
         background-size: contain;
         background-repeat: no-repeat;
@@ -279,16 +279,29 @@
     }
      .main .section1 .box1 .box_item1 .buy_product .item1  tr, td, th{
         /*margin: 5px 5px 5px 5px;*/
-        padding: 10px 30px 10px 30px;
+        padding: 4px 7px 4px 7px;
         text-align: center;
         border-top: 1px solid black;
+    }
+    .sendqtt {
+        display: flex;
+        /* border: 1px solid black; */
+        flex-flow: row nowrap;
+        align-items: center;
+        padding-top: 10px;
+        border: none;
+        justify-content: center;
+    }
+    .sendqtt input[type=text]{
+        text-align: center;
+        width: 30px;
     }
     .footer {
             position: relative;
             top: 0px;
             width: 100%;
             min-width: 1280px;
-            height: 5vh;
+            height: 0vh;
             background-color: rgb(92,92,92);
         }
     
@@ -348,12 +361,19 @@
                     <hr>
                        <div class="title">창고 재고</div>
                        <div class="item1">
-                           <table>
+                        <!-- <button type="button" onclick="exportTableToCsv('admin-warehouse-detail', 'Export_Test');">
+                            Export
+                        </button> -->
+                           <table id="admin-warehouse-detail">
                                 <tr>
                                     <th></th>
                                     <th>제품 이름</th>
                                     <th>제품 설명</th>
                                     <th>제품 수량</th>
+                                    <th>요청재고수량</th>
+                                    <th>주문관리</th>
+                                    <th>발주수량</th>
+                                    <th>발주관리</th>
                                 </tr>
                                 <% for(var i=0; i<=data.length-1; i++) {
                                     var Data = data[i];
@@ -361,11 +381,24 @@
                                <tr>
                                    <td><%=i+1%></td>
                                    <td><a href="/productDetail/<%=Data.PRODUCT_ID%>"><%=Data.PRODUCT_NAME%></a></td>
-                                   <td><%=Data.DESCRIPTION%></td>
-                                   <td><%=Data.QUANTITY%></td>
-                               </tr>   
-                               <%} %>                           
-                           </table>
+                                   <td style="font-size:10pt ;"><%=Data.DESCRIPTION%></td>
+                                    <td><%=Data.QUANTITY%></td>
+                                   <td><%=Data.TOTAL%></td>
+                                   <td><button onclick="location.href ='/admin/send/<%=Data.WAREHOUSE_ID%>?productId=<%=Data.PRODUCT_ID%>'">주문처리</button></td>
+                                   <form action ="/admin/borderorders" method="post">
+                                   <td class="sendqtt">
+                                    
+                                    <div class = "minus"><button onclick="change2('m');" type="button">-</button></div>
+                                    <input type="text" name="quantity" id = "quantity" value="1">
+                                    <div class = "plus"><button onclick="change2('p');" type="button">+</button></div>
+                                    <input type="hidden" value ="<%=Data.WAREHOUSE_ID%>" name="warehouse_id">
+                                    <input type="hidden" value ="<%=Data.PRODUCT_ID%>" name="product_id">
+                                    </td>
+                                   <td><button type="submit">발주</button></td>
+                                </form>
+                                </tr>   
+                                <%} %>                           
+                            </table>
                        </div>
                    </div>
                 </div>
@@ -381,5 +414,5 @@
     </footer>
 
 </body>
-
+<script src="/product-order.js"></script>
 </html>

@@ -1,5 +1,7 @@
 const AdminService = require('../C_services/admin-service')
 const url = require('url');
+const {getCookiePayload} = require('../middleware/jwt');
+const UserService = require('../C_services/user-service');
 
 module.exports.getCustomers = async (req,res)=>{
     try {
@@ -45,10 +47,12 @@ exports.getCustomer = async (req, res)=>{
 exports.getWarehouse = async (req, res)=>{
   try {
       const warehouseID = req.params.warehouseId;
-      console.log(warehouseID)
-      const row = await AdminService.getWarehouse(warehouseID);
+      // console.log(warehouseID)
+      const rows = await AdminService.getWarehouse(warehouseID);
+      // console.log(rows);
       console.log(':: Controller - getWarehouse success ::')
-      return res.render('admin_warehouse_detailed', { data: row });
+      return res.render('admin_warehouse_detailed', { data: rows});
+     
     } catch (err) {
       return res.status(500).json(err);
     }
@@ -64,6 +68,15 @@ exports.getBranch = async (req, res)=>{
       return res.status(500).json(err);
     }
 };
+
+exports.getOrders = async (req,res) =>{
+  try{
+    const rows = await AdminService.getOrders();
+    return res.render('admin_orders',{data:rows});
+  }catch (err){
+    return res.status(500).json(err);
+  }
+}
 exports.searchBranch = async (req,res) =>{
   try {
 
@@ -104,3 +117,49 @@ module.exports.getInfo = async (req,res)=>{
       return res.status(500).json(err);
     }
 }
+
+exports.send = async(req,res) =>{
+    try{
+      const warehouseID = req.params.warehouseId;
+      const productID = req.query.productId;
+      console.log(warehouseID,'send',productID);
+      await AdminService.send(warehouseID,productID);
+    }catch (err){
+      return res.status(500).json(err);
+    }
+  };
+  
+exports.borderOrders = async (req,res) =>{
+    try{
+      // console.log(req.body);
+      let employeeID;
+      const payroad = getCookiePayload(req,res);
+      // console.log(payroad);
+      if(payroad == -1){
+        return res.send('<script>alert("잘못된 접근입니다.");location.href="/";</script>');
+      }else {
+        employeeID = await UserService.getEmployeeId(payroad);
+        // console.log(employeeID);
+      }
+      const warehouseID = req.body.warehouse_id;
+      const result = await AdminService.borderOrders(req.body,employeeID);
+      if(result ===1){
+        return res.send(`<script>alert("발주완료 되었습니다.");location.href="/warehouseDetail/${warehouseID}";</script>`);
+      }else{
+        return res.send(`<script>alert("발주실패");location.href="/warehouseDetail/${warehouseID}";</script>`);
+      }
+    }catch(err){
+      return res.status(500).json(err);
+    }
+  };
+
+exports.searhOptionOrders = async (req,res)=>{
+  try{  
+    const option = url.parse(req.url, true).query.search_option;
+    console.log(option);
+    const rows = await AdminService.searchOptionOrders(option);
+    return res.render('admin_orders',{data:rows});
+  }catch (err){
+    return res.status(500).json(err);
+  }
+}  

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>최윤서</title>
-    <script src="/product-order.js"> </script>
+    
  </head>
  
     <style>
@@ -144,7 +144,7 @@
        text-decoration-line: underline;
        color: green;
     }
-
+  
     
     .main .section2 .right{
         position: relative;
@@ -281,14 +281,13 @@
         </section>
         <section class="section2">
             <div class="left">
-                        <div class="menu1"><a href ="/allProduct">상품 전체 보기</a></div> 
-                            <div class="menu1">카테고리</div> 
-                            <div class="menu1"><a href="/allProduct?categoryId=1">CPU</a></div>
-                            <div class="menu1"><a href="/allProduct?categoryId=2">비디오 카드</a></div>
-                            <div class="menu1"><a href="/allProduct?categoryId=3">RAM</a></div>
-                            <div class="menu1"><a href="/allProduct?categoryId=4">마더 보드</a></div>
-                            <div class="menu1"><a href="/allProduct?categoryId=5">저장소</a></div>
-                        </ul>
+                <div class="menu1"><a href="/allProduct">상품 전체 보기</a></div>
+                <div class="menu1">카테고리</div>
+                <div class="menu1"><a href="/allProduct?categoryId=1"><span class="div2">CPU</span></a></div>
+                <div class="menu1"><a href="/allProduct?categoryId=2"><span class="div2">비디오 카드</span></a></div>
+                <div class="menu1"><a href="/allProduct?categoryId=3"><span class="div2">RAM</span></a></div>
+                <div class="menu1"><a href="/allProduct?categoryId=4"><span class="div2">마더 보드</span></a></div>
+                <div class="menu1"><a href="/allProduct?categoryId=5"><span class="div2">저장소</span></a></div>
                     </div>
                     <div class="right">
                         <div class="title"> <%=data.PRODUCT_NAME%></div>
@@ -334,4 +333,5 @@
     </footer>
 
 </body>
+<script src="/product-order.js"> </script>
 </html>

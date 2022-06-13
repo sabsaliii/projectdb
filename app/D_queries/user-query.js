@@ -5,3 +5,6 @@ exports.getDate = 'SELECT TO_CHAR(SYSDATE, '+'YY-MM-DD'+') FROM DUAL';
 
 exports.findEmployeePW = 'select user_password from employees where email = :email';
 exports.getSalt = 'select salt from employees where email = :email';
+exports.getJobTitle = 'select job_title from employees where email = :email';
+
+exports.getEmployeeId = 'select employee_id from employees where email=:email';

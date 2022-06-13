@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "date-utils": "^1.2.21",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "method-override": "^3.0.0",
+    "oracledb": "^5.4.0"
+  },
+  "name": "dbproject",
+  "description": "",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sabsaliii/projectdb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sabsaliii/projectdb/issues"
+  },
+  "homepage": "https://github.com/sabsaliii/projectdb#readme"
+}

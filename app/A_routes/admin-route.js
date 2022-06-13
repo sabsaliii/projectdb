@@ -16,5 +16,7 @@ module.exports=router=>{
     router.get('/branchDetail/:customerId',AdminController.getBranch);
 
     router.get('/admin/orders',AdminController.getOrders);
+    router.get('/search_branch',AdminController.searchBranch);
+    router.get('/search_admin',AdminController.searchAdmin);
 
 };

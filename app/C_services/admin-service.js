@@ -53,7 +53,7 @@ exports.getBranches = async (warehouseID) => {
         }
         
         console.log(':: Service - getBranches success ::')
-        console.log(data.rows)
+        //console.log(data.rows)
         await connection.close()
         return data.rows;
     } catch (err) {
@@ -69,7 +69,7 @@ exports.getCustomer = async (contactID) => {
         console.log(':: Service - getCustomer success ::')
         console.log(data.rows)
         await connection.close()
-        return data.rows[0];
+        return data.rows;
     }catch(err){
         console.log(err);
         throw Error(err);
@@ -102,3 +102,37 @@ exports.getOrders= async() =>{
         throw Error(err);
     }
 }
+exports.searchBranch = async (key) => {
+    try {
+        let connection = await pool.getConnection('ys');
+        key = '%'+key+'%';
+        const lowerKey = key.toUpperCase();
+        const upperKey =key.toLowerCase();
+        // console.log(lowerKey,upperKey);
+        const data = await connection.execute(query.searchBranch,[key]);
+        
+        console.log(':: Service - searchBranch success ::')
+        await connection.close()
+        return data.rows;
+    } catch (err) {
+        console.log(err);
+        throw Error(err);
+    }
+};
+exports.searchAdmin = async (key) => {
+    try {
+        let connection = await pool.getConnection('ys');
+        key = '%'+key+'%';
+        const lowerKey = key.toUpperCase();
+        const upperKey =key.toLowerCase();
+        //console.log(lowerKey,upperKey);
+        const data = await connection.execute(query.searchAdmin,[key]);
+        
+        console.log(':: Service - searchAdmin success ::')
+        await connection.close()
+        return data.rows;
+    } catch (err) {
+        console.log(err);
+        throw Error(err);
+    }
+};

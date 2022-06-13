@@ -338,6 +338,9 @@
                                <li><span style="font-weight: 600;">credit_limit  :  </span> <%=data.CREDIT_LIMIT%></li>
                                <li><span style="font-weight: 600;">website  :  </span> <a href= '#'><%=data.WEBSITE%></a></li>
                                <li><span style="font-weight: 600;">warehouse  :  </span> <%=data.WAREHOUSE_ID%> </li>
+                               <li><span style="font-weight: 600;">manager  :  </span> <%=data.FIRST_NAME%>&nbsp;<%=data.LAST_NAME%>
+                                <span class="item_btn1"><a href="/admin/customerDetail?contactId=<%=data.CONTACT_ID%>"><input type="submit" value="주문 내역 열람"></a></span>
+
                            </ul>
                        </div>
                     </div>

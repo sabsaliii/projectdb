@@ -35,9 +35,9 @@ exports.search = async (req,res) =>{
   try {
     const loginstate = loginState(req,res);
     const key = url.parse(req.url, true).query.search;
-    // console.log(key)
-    if(key == null){
-      return res.send('<script>alert("검색할 단어를 입력해주세요.");location.href="/allProdut";</script>');
+    //console.log(key)
+    if(key == ""){
+      return res.send('<script>alert("검색할 단어를 입력해주세요.");location.href="/allProduct";</script>');
     }
     const rows = await ProductService.search(key);
     console.log(':: Controller - search success ::')

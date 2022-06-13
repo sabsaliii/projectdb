@@ -6,4 +6,4 @@ exports.getBranches = 'select * from customers';
 exports.getBranch = 'select * from customers where customer_id = :num';
 exports.getBranches_category = 'select * from customers where warehouse_id= :num';
 
-
+exports.getOrders = 'select * from orders natural join order_items natural join products natural join customers';

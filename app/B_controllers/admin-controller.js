@@ -63,3 +63,12 @@ exports.getBranch = async (req, res)=>{
       return res.status(500).json(err);
     }
 };
+
+exports.getOrders = async (req,res) =>{
+  try{
+    const rows = await AdminService.getOrders();
+    return res.render('admin_orders',{data:rows});
+  }catch (err){
+    return res.status(500).json(err);
+  }
+};

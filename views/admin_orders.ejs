@@ -288,7 +288,7 @@
             top: 0px;
             width: 100%;
             min-width: 1280px;
-            height: 5vh;
+            height: 0vh;
             background-color: rgb(92,92,92);
         }
     
@@ -352,27 +352,27 @@
                                 <tr>
                                     <th></th>
                                     <th>구매 제품</th>
+                                    <th>구매 지점</th>
                                     <th>배송상태</th>
                                     <th>주문날짜</th>
                                     <th>수량</th>
                                     <th>결제금액</th>
                                 </tr>
-                               <tr>
-                                   <td>1</td>
-                                   <td>Asus MAXIMUS IX CODE</td>
-                                   <td>Pending</td>
-                                   <td>15-08-17</td>
-                                   <td>52</td>
-                                   <td>892</td>
-                               </tr>
-                                <tr>
-                                   <td>2</td>
-                                   <td>Asus MAXIMUS IX CODE</td>
-                                   <td>Pending</td>
-                                   <td>15-08-17</td>
-                                   <td>52</td>
-                                   <td>892</td>
-                               </tr>
+                               
+                               <% for(var i=data.length-1; i>=0; i--) {
+                                var Data = data[i];
+                                %> <tr>
+                                    <td> <%=data.length-i%></td>
+                                    <td> <%=Data.PRODUCT_NAME%></td>
+                                    <td> <%=Data.NAME%></td>
+                                    <td><%=Data.STATUS%></td>
+                                    <td><%=Data.ORDER_DATE%></td>
+                                    <td><%=Data.QUANTITY%></td>
+                                    <td><%=Data.QUANTITY*Data.UNIT_PRICE%></td>
+ 
+                                </tr>
+                                <%} %>
+                        
                               
                            </table>
                        </div>

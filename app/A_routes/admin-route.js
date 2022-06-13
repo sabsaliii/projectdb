@@ -15,4 +15,6 @@ module.exports=router=>{
     router.get('/admin_branch',AdminController.getBranches);
     router.get('/branchDetail/:customerId',AdminController.getBranch);
 
+    router.get('/admin/orders',AdminController.getOrders);
+
 };

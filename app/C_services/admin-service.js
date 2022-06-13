@@ -88,3 +88,17 @@ exports.getBranch = async (customerID) => {
         throw Error(err);
     }
 };
+
+exports.getOrders= async() =>{
+    try{
+        let connection = await pool.getConnection('ys');
+        const data = await connection.execute(query.getOrders);
+        console.log(':: Service - getOrders success ::')
+        console.log(data.rows)
+        await connection.close()
+        return data.rows;
+    }catch (err){
+        console.log(err);
+        throw Error(err);
+    }
+}

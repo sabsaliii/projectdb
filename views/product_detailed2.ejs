@@ -16,83 +16,7 @@
         /*font-family : 'gulim', 'gothic';*/
         position: relative;
      }
-    .header{
-        position: relative;
-        top: 0px;
-        width: 100%;
-        height: 7vh;
-        background-color: white;
-        /*border: 1px solid black;*/
-    }
-    .header .nav{
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        top: 0px;
-        margin: 0px auto;
-        width: 95%;
-        background-color: white;
-        height: 100%;
-        /*border: 1px solid black;*/
-
-    }
-  
-    .header .nav .logo{
-        position: relative;
-        align-items: center;
-        float: left;
-        font-weight: 500;
-        background-color: white;
-        width: 180px;
-        justify-content: space-between;
-        /*height: 100%;*/
-        /*border: 1px solid black;*/
-        cursor: pointer;
-
-    }
-    .header .nav .logo a{
-        text-decoration: none;
-        color: black;
-        font-size: 14pt;
-    }
-    .header .nav .logo a:hover{
-        /*text-decoration: none;*/
-        color: royalblue;
-        /*font-size: 14pt;*/
-    }
    
-    .header .nav .menu{
-        position: relative;
-        align-items: center;
-        text-align: right;
-        justify-content: right;
-        display: flex;
-        background-color: white;
-        width: 50%;
-        /*height: 100%;*/
-        /*border: 1px solid black;*/
-        cursor: pointer;
-
-    }
-    .header .nav .menu .menu1{
-        position: relative;
-        align-items: center;
-        float: left;
-        background-color: white;
-        width: 200px;
-        /*height: 100%;*/
-        /*border: 1px solid black;*/
-        cursor: pointer;
-
-    }
-     .a1{
-        text-decoration: none;
-        color: black;
-     }
-     .a1:hover{
-        color: green;
-     }
    .main{
         position: relative;
         top: 0px;
@@ -122,51 +46,58 @@
         position:relative;
         width: 180px;
         height: 100%;
-        background-image: url("https://postfiles.pstatic.net/MjAyMjA2MDRfNSAg/MDAxNjU0MjcyMDUyNjQ0.QsclcyG8maGrK2E02eceubQ1oaRAzdiep28rjH6l1rQg.BBIrb5h4cNMs38ox8WKw1tMGYeOilmxbp6Gom9X-phsg.PNG.cys4189/logo.png?type=w966");
+        background-image: url("https://i.postimg.cc/SNsvQM9v/logo.png");
         /*border: 1px solid black;*/
         background-size:contain;
         background-repeat: no-repeat;
     }
     .main .section1 .search {
-        position: relative;
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-        margin-left: 30px;
-        width: 400px;
-        height: 50px;
-    }
+            
+            position: relative;
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            width: 400px;
+            padding: 5px 5px 5px 5px;
+            margin-left: 30px;
+        }
 
-    .main .section1 .search input {
-        position: relative;
-        border: 2px solid rgb(50, 50, 50);
-        width: 90%;
-        /*margin: 0;*/
-        padding: 0 10px 0 10px;
-        height: 60%;
-        /*border: none;*/
-        border-radius: 8px;
-        font-size: 12pt;
-    }
+        .main .section1 .search  input[type=text] {
+            position: relative;
+            width: 350px;
+            /* height: 90%; */
+            border: 2px solid rgb(50, 50, 50);
+            border-radius: 8px;
+            padding: 10px 0px 10px 10px;
+            font-size: 15px;
+            /* border: 1px solid black; */
+            
+        }
+        .main .section1 .search button[type=submit] {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: none;
+            right: 55px;
+            margin: 10px 0px 0px 0px;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            cursor: pointer;
+        }
+        .main .section1 .search img {
+            position: absolute;
+            width: 19px;
+            bottom: 1px;
+            right: 0px;
+            margin: 0;
+            transition: all 0.5s linear;
+            cursor: pointer;
+        }
+        .main .section1 .search img:hover{
+            transform: scale(1.3) rotate(45deg);
+        }
 
-    .main .section1 .search input[type=submit] {
-        position: relative;
-        background-image: url('https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png');
-        background-position: 2px 2px;
-        background-repeat: no-repeat;
-        background-size:30px;
-        margin-left: 5px;
-        padding: 0 10px 0 10px;
-        width: 10%;
-        height: 70%;
-        border: none;
-        background-color: rgb(255, 255, 255);
-    }
-
-    .main .section1 .search input[type=submit]:hover {
-        background-color: rgb(220, 220, 220);
-    } 
-  
 
 
     .main .section2{
@@ -335,33 +266,22 @@
 </head>
 
 <body>
-    <header class="header">
-        <nav class="nav">
-            <div class="logo"><a href="/">윤 & 현 컴퍼니</a></div>
-            <div class="menu">
-<!--                 <div class="menu1"><a class ="a1" href ="">branch</a></div>
-                <div class="menu1"><a class = "a1" href ="">orders</a></div> -->
-               <div class="menu1"><a class = "a1" href ="/allProduct">products</a></div>
-               <div class="menu1"><a class = "a1" href ="/loginform">login</a></div>
-
-           </div>
-        </nav>
-
-    </header>
+    <%- include('nav',{login:login})%>
     <main class="main">
         <section class="section1">
             <div class="logo"></div>
-            <form action="/search" method="get">
-                <div class="search">
-                    <form action="/search" method="get">
-                        <input type="text" name="search" placeholder="검색어를 입력하세요.">
-                        <input type="submit" value="">
-                </div>
-            </form>
+            <div class="search">
+                <form action="/search" method="get">
+                    <input type="text" placeholder="검색어 입력" name="search">
+                    <button type="submit"><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"></button>
+                </form>
+            </div>
+
+          
         </section>
         <section class="section2">
             <div class="left">
-                        <div class="menu1"><a href ="">상품 전체 보기</a></div> 
+                        <div class="menu1"><a href ="/allProduct">상품 전체 보기</a></div> 
                             <div class="menu1">카테고리</div> 
                             <div class="menu1"><a href="/allProduct?categoryId=1">CPU</a></div>
                             <div class="menu1"><a href="/allProduct?categoryId=2">비디오 카드</a></div>

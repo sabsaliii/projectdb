@@ -11,83 +11,7 @@
         /*font-family : 'gulim', 'gothic';*/
         position: relative;
      }
-    .header{
-        position: relative;
-        top: 0px;
-        width: 100%;
-        height: 7vh;
-        background-color: white;
-        /*border: 1px solid black;*/
-    }
-    .header .nav{
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        top: 0px;
-        margin: 0px auto;
-        width: 95%;
-        background-color: white;
-        height: 100%;
-        /*border: 1px solid black;*/
-
-    }
-  
-    .header .nav .logo{
-        position: relative;
-        align-items: center;
-        float: left;
-        font-weight: 500;
-        background-color: white;
-        width: 180px;
-        justify-content: space-between;
-        /*height: 100%;*/
-        /*border: 1px solid black;*/
-        cursor: pointer;
-
-    }
-    .header .nav .logo a{
-        text-decoration: none;
-        color: black;
-        font-size: 14pt;
-    }
-    .header .nav .logo a:hover{
-        /*text-decoration: none;*/
-        color: royalblue;
-        /*font-size: 14pt;*/
-    }
    
-    .header .nav .menu{
-        position: relative;
-        align-items: center;
-        text-align: right;
-        display: flex;
-        justify-content: right;
-        background-color: white;
-        width: 50%;
-        /*height: 100%;*/
-        /*border: 1px solid black;*/
-        cursor: pointer;
-
-    }
-    .header .nav .menu .menu1{
-        position: relative;
-        align-items: center;
-        float: left;
-        background-color: white;
-        width: 200px;
-        /*height: 100%;*/
-        /*border: 1px solid black;*/
-        cursor: pointer;
-
-    }
-     .a1{
-        text-decoration: none;
-        color: black;
-     }
-     .a1:hover{
-        color: green;
-     }
    .main{
         position: relative;
         top: 0px;
@@ -196,19 +120,7 @@
 </head>
 
 <body>
-    <header class="header">
-        <nav class="nav">
-            <div class="logo"><a href="/">윤 & 현 컴퍼니</a></div>
-            <div class="menu">
-                <!-- <div class="menu1"><a class ="a1" href ="">branch</a></div>
-                <div class="menu1"><a class = "a1" href ="">orders</a></div> -->
-               <div class="menu1"><a class = "a1" href ="/allProduct">products</a></div>
-               <div class="menu1"><a class = "a1" href ="/loginform">login</a></div>
-
-           </div>
-        </nav>
-
-    </header>
+    <%- include('nav',{login:false})%>
     <main class="main">
         <section class="section1">
             <div class="title">login</div>

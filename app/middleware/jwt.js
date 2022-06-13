@@ -32,6 +32,7 @@ exports.authenticate = (req, res, next) => {
         let user;
         try {
             user = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
+           // res.render('nav',{login:true});
         } catch (err) {
             try {
                 const refreshToken = jwt.verify(req.cookies.refreshToken, process.env.REFRESH_TOKEN_SECRET);
@@ -41,6 +42,7 @@ exports.authenticate = (req, res, next) => {
 
                 return res.send('<script>location.reload();</script>');
             } catch (err2) {
+               // res.render('nav',{login:false})
                 res.clearCookie('refreshToken');
                 res.clearCookie('accessToken');
                 return res.send('<script>alert(\'로그인 시간제한이 만료되었습니다.\'); location.href="/"</script>');
@@ -55,5 +57,18 @@ exports.authenticate = (req, res, next) => {
         return res.status(500).json(err);
     }
 };
+
+exports.loginState = (req,res,next)=>{
+    try{
+        console.log('loginState!!');
+        if (req.cookies.accessToken && req.cookies.refreshToken) {
+            return true;
+        }else{
+            return false;
+        }
+    }catch (err){
+        return res.send(500).json(err);
+    }
+}
 
 

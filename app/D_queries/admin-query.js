@@ -1,5 +1,5 @@
 exports.getCustomers = 'select contact_id, first_name, last_name, name from contacts natural join customers';
-exports.getCustomer = 'select * from contacts join customers on contacts.customer_id = customers.customer_id left join (orders join (order_items join products on order_items.product_id = products.product_id) on orders.order_id = order_items.order_id) on contacts.customer_id = orders.customer_id where contacts.contact_id = :num';
+exports.getCustomer = 'select * from orders  o join order_items oi on o.order_id=oi.order_id join products p on oi.product_id = p.product_id join customers c on c.customer_id = o.customer_id';
 exports.getWarehouses = 'select * from warehouses';
 exports.getWarehouse = 'select * from warehouses join locations on warehouses.location_id = locations.location_id join inventories on warehouses.warehouse_id = inventories.warehouse_id join products on inventories.product_id = products.product_id where warehouses.warehouse_id = :num order by products.product_id';
 exports.getBranches = 'select * from customers';
@@ -14,3 +14,7 @@ exports.getRequestQtt = `select warehouse_id ,product_id, SUM(order_items.quanti
 exports.getWarehouseDetail = 'select* from warehousedetail left join requestquantity on requestquantity.warehouse_id = warehousedetail.warehouse_id and requestquantity.product_id = warehousedetail.product_id where warehousedetail.warehouse_id= :warehouse_id order by warehousedetail.warehouse_id';
 // exports.send = 'update ';
 exports.borderOrders = `insert into border_orders (product_id,employee_id,quantity,warehouse_id,order_date)values(:product_id,:employee_id,:quantity,:warehouse_id,to_date(:order_date,'YY-MM-DD hh24:mi:ss'))`;
+
+exports.searchPendingOrders = `select * from orders  o join order_items oi on o.order_id=oi.order_id join products p on oi.product_id = p.product_id join customers c on c.customer_id = o.customer_id where status ='Pending'`;
+exports.searchShippedOrders = `select * from orders  o join order_items oi on o.order_id=oi.order_id join products p on oi.product_id = p.product_id join customers c on c.customer_id = o.customer_id where status ='Shipped'`;
+exports.searchCanceledOrders =`select * from orders  o join order_items oi on o.order_id=oi.order_id join products p on oi.product_id = p.product_id join customers c on c.customer_id = o.customer_id where status ='Canceled'`;

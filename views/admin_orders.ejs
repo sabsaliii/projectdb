@@ -348,6 +348,15 @@
                     <!-- <hr> -->
                        <div class="title">주문 관리</div>
                        <div class="item1">
+                        <form action="/admin/orders/option" method ='get'>
+                        <select name="search_option" class="search_option">
+                            <option value="">--배송상태--</option>
+                                <option value=1 class="search_option_data">Pending</option>
+                                <option value=2 class="search_option_data">Shipped</option>
+                                <option value=3 class="search_option_data">Canceled</option>
+                        </select>
+                        <button type="submit">필터</button>
+                        </form>
                            <table>
                                 <tr>
                                     <th></th>

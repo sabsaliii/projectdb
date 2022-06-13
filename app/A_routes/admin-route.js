@@ -17,11 +17,14 @@ module.exports=router=>{
     router.get('/admin_branch',authEmployee,AdminController.getBranches);
     router.get('/branchDetail/:customerId',authEmployee,AdminController.getBranch);
 
-    router.get('/admin/orders',authEmployee,AdminController.getOrders);
+    
     router.get('/search_branch',authEmployee,AdminController.searchBranch);
     router.get('/search_admin',authEmployee,AdminController.searchAdmin);
 
     router.get('/admin/send/:warehouseId',authEmployee,AdminController.send);
     router.post('/admin/borderorders',authAdmin,AdminController.borderOrders);
+
+    router.get('/admin/orders',authEmployee,AdminController.getOrders);
+    router.get('/admin/orders/option',authEmployee,AdminController.searhOptionOrders);
 
 };

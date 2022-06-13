@@ -142,3 +142,14 @@ exports.borderOrders = async (req,res) =>{
       return res.status(500).json(err);
     }
   };
+
+exports.searhOptionOrders = async (req,res)=>{
+  try{  
+    const option = url.parse(req.url, true).query.search_option;
+    console.log(option);
+    const rows = await AdminService.searchOptionOrders(option);
+    return res.render('admin_orders',{data:rows});
+  }catch (err){
+    return res.status(500).json(err);
+  }
+}  

@@ -96,7 +96,7 @@ exports.getOrders= async() =>{
         let connection = await pool.getConnection('ys');
         const data = await connection.execute(query.getOrders);
         console.log(':: Service - getOrders success ::')
-        console.log(data.rows)
+        // console.log(data.rows)
         await connection.close()
         return data.rows;
     }catch (err){
@@ -179,3 +179,27 @@ exports.send = async (warehouseID,productID) =>{
             throw Error(err);
         }
     };
+
+    exports.searchOptionOrders = async (option) =>{
+        try{
+            let data;
+            let connection = await pool.getConnection('ys');
+            if (option === '1') { //pending
+                data = await connection.execute(query.searchPendingOrders);
+               
+              } else if (option === '2'){ //shipped
+                data = await connection.execute(query.searchShippedOrders);
+               
+              } else if(option==='3'){ //canceled
+                data = await connection.execute(query.searchCanceledOrders);
+              }else{
+                //전체나오게
+                data = await connection.execute(query.getOrders);
+              }
+            await connection.close();
+            return data.rows;
+        }catch(err){
+            console.log(err);
+            throw Error(err);
+        }
+    }   

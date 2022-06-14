@@ -163,3 +163,13 @@ exports.searhOptionOrders = async (req,res)=>{
     return res.status(500).json(err);
   }
 }  
+exports.searhOptionInfo = async (req,res)=>{
+  try{  
+    const option = url.parse(req.url, true).query.search_option;
+    console.log(option);
+    const rows = await AdminService.searhOptionInfo(option);
+    return res.render('info-list',{data:rows});
+  }catch (err){
+    return res.status(500).json(err);
+  }
+}  

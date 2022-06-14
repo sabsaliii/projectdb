@@ -145,7 +145,7 @@
         text-align: center;
         height: 100%;
         /*bottom: 3px;*/
-        background-image: url("logo.png");
+        background-image: url("https://i.postimg.cc/SNsvQM9v/logo.png");
           /*border: 1px solid black;*/
         background-size: contain;
         background-repeat: no-repeat;
@@ -318,7 +318,7 @@
            <hr class="menu_hr">
            <div class="menu"><a href="/admin"> 담당자 관리</a></div>
            <hr class="menu_hr">
-           <div class="menu"><a href="/admin_orders"> 주문 관리</a></div>
+           <div class="menu"><a href="/admin/orders"> 주문 관리</a></div>
            <hr class="menu_hr">
            <div class="menu"><a href="/admin_warehouse"> 창고 관리</a></div>
            <hr class="menu_hr">
@@ -335,12 +335,22 @@
                     <hr>
                        <div class="title">발주 내역</div>
                        <div class="item1">
+                        <form action="/info-list/option" method ='get'>
+                            <select name="search_option" class="search_option">
+                                <option value="">--배송상태--</option>
+                                    <option value=1 class="search_option_data">발주 전</option>
+                                    <option value=2 class="search_option_data">발주 완료</option>
+                            </select>
+                            <button type="submit">필터</button>
+                            </form>
                            <table>
                                 <tr>
                                     <th></th>
                                     <th>제품 이름</th>
                                     <th>제품 설명</th>
-                                    <th>주문 수량</th>
+                                    <th>배송상태</th>
+                                    <th>발주수량</th>
+                                    <th>발주관리</th>
                                 </tr>
                                 <% for(var i=0; i<=data.length-1; i++) {
                                     var Data = data[i];
@@ -349,7 +359,9 @@
                                    <td><%=i+1%></td>
                                    <td><a href="/productDetail/<%=Data.PRODUCT_ID%>"><%=Data.PRODUCT_NAME%></a></td>
                                    <td><%=Data.DESCRIPTION%></td>
-                                   <td><%=Data.QUANTITY%></td>
+                                   <td><%=Data.STATUS%></td>
+                                   <td><%=Data.TOTAL%></td>
+                                   <td><button type="submit">발주</button></td>
                                </tr>   
                                <%} %>                           
                            </table>

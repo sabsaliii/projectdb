@@ -11,7 +11,7 @@ exports.searchBranch ='select*from customers where (name like :name or LOWER(nam
 exports.searchAdmin ='select * from contacts where (first_name like :name or LOWER(first_name) like LOWER(:name) or UPPER(first_name) like UPPER(:name)) or (last_name like :name or LOWER(last_name) like LOWER(:name) or UPPER(last_name) like UPPER(:name))';
 
 
-exports.getInfo = 'select * from orders';
+exports.getInfo = 'select * from border_order_view natural join products';
 exports.getRequestQtt = `select warehouse_id ,product_id, SUM(order_items.quantity)  from order_items left outer join orders on orders.order_id=order_items.order_id and orders.status='Pending' left outer join customers on orders.customer_id=customers.customer_id where warehouse_id = :warehouse_id group by product_id,warehouse_id order by warehouse_id,product_id`;
 exports.getWarehouseDetail = 'select* from warehousedetail left join requestquantity on requestquantity.warehouse_id = warehousedetail.warehouse_id and requestquantity.product_id = warehousedetail.product_id where warehousedetail.warehouse_id= :warehouse_id order by warehousedetail.warehouse_id';
 // exports.send = 'update ';
@@ -20,3 +20,7 @@ exports.borderOrders = `insert into border_orders (product_id,employee_id,quanti
 exports.searchPendingOrders = `select * from orders  o join order_items oi on o.order_id=oi.order_id join products p on oi.product_id = p.product_id join customers c on c.customer_id = o.customer_id where status ='Pending'`;
 exports.searchShippedOrders = `select * from orders  o join order_items oi on o.order_id=oi.order_id join products p on oi.product_id = p.product_id join customers c on c.customer_id = o.customer_id where status ='Shipped'`;
 exports.searchCanceledOrders =`select * from orders  o join order_items oi on o.order_id=oi.order_id join products p on oi.product_id = p.product_id join customers c on c.customer_id = o.customer_id where status ='Canceled'`;
+
+
+exports.searchPendingInfo = `select * from border_order_view natural join products where status = 'Pending'`;
+exports.searchShippedInfo = `select * from border_order_view natural join products where status ='Shipped'`;

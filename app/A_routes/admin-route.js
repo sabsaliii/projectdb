@@ -28,5 +28,7 @@ module.exports=router=>{
     router.get('/admin/orders/option',authEmployee,AdminController.searhOptionOrders);
 
     router.get('/info-list',AdminController.getInfo);
+    router.get('/info-list/option',authEmployee,AdminController.searhOptionInfo);
+
 
 };

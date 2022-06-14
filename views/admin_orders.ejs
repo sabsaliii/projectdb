@@ -145,7 +145,7 @@
         text-align: center;
         height: 100%;
         /*bottom: 3px;*/
-        background-image: url("logo.png");
+        background-image: url("https://i.postimg.cc/SNsvQM9v/logo.png");
           /*border: 1px solid black;*/
         background-size: contain;
         background-repeat: no-repeat;
@@ -318,7 +318,7 @@
            <hr class="menu_hr">
            <div class="menu"><a href="/admin"> 담당자 관리</a></div>
            <hr class="menu_hr">
-           <div class="menu"><a href="/admin_orders"> 주문 관리</a></div>
+           <div class="menu"><a href="/admin/orders"> 주문 관리</a></div>
            <hr class="menu_hr">
            <div class="menu"><a href="/admin_warehouse"> 창고 관리</a></div>
            <hr class="menu_hr">
@@ -368,14 +368,24 @@
                                     <th>결제금액</th>
                                 </tr>
                                
-                               <% for(var i=data.length-1; i>=0; i--) {
-                                var Data = data[i];
-                                %> <tr>
-                                    <td> <%=data.length-i%></td>
+                                <% for(var i=0; i<=data.length-1; i++) {
+                                    var Data = data[i];
+                                    var date=Data.ORDER_DATE;
+                                    var year = date.getFullYear();
+                                    var month = ('0' + (date.getMonth() + 1)).slice(-2);
+                                    var day = ('0' + date.getDate()).slice(-2);
+                                    var hours = ('0' + date.getHours()).slice(-2);
+                                    var minutes = ('0' + date.getMinutes()).slice(-2);
+                                    var seconds = ('0' + date.getSeconds()).slice(-2);
+                                
+                                    var dateString = year + '-' + month  + '-' + day +" " + hours + ':' + minutes  + ':' + seconds; 
+                                    %>
+                                <tr>
+                                    <td> <%=i+1%></td>
                                     <td> <%=Data.PRODUCT_NAME%></td>
                                     <td> <%=Data.NAME%></td>
                                     <td><%=Data.STATUS%></td>
-                                    <td><%=Data.ORDER_DATE%></td>
+                                    <td><%=dateString%></td>
                                     <td><%=Data.QUANTITY%></td>
                                     <td><%=Data.QUANTITY*Data.UNIT_PRICE%></td>
  

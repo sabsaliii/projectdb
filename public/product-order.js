@@ -84,7 +84,7 @@ function change2(t){
       
       const rowData = table.rows[rowCnt].cells;
       console.log(rowData);
-      for (let colCnt = 0; colCnt < rowData.length-3; colCnt++) { //열
+      for (let colCnt = 0; colCnt < rowData.length; colCnt++) { //열
         // let columnData = rowData[colCnt].innerHTML;
         let columnData = rowData[colCnt].innerText;
         if (columnData == null || columnData.length === 0) {

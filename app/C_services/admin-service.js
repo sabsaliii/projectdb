@@ -152,22 +152,6 @@ exports.getInfo = async () => {
     }
 };
 
-exports.send = async (warehouseID, productID) => {
-    try {
-        // console.log(warehouseID,productID);
-        // console.log(':: Service - send success ::');
-        // let connection = await pool.getConnection('ys');
-
-        // const data = await connection.execute(query.send,[warehouseID,productID]);
-        // console.log(data);
-
-        // await connection.close()
-        // return data;
-    } catch (err) {
-        console.log(err);
-        throw Error(err);
-    }
-};
 
 exports.borderOrders = async (body, employeeID) => {
     try {
@@ -180,6 +164,8 @@ exports.borderOrders = async (body, employeeID) => {
         // console.log(employeeID, warehouseID, quantity,productID,orderDate);
         const data = await connection.execute(query.borderOrders, [productID, employeeID, quantity, warehouseID, orderDate]);
         // console.log(data);
+        //발주하면 증가하는 거 계속 마이너스되서...일단봐야하니께
+        await connection.execute('update inventories set quantity = quantity + :quantity where product_id=:num and warehouse_id=:num',[quantity,productID,warehouseID]);
         if (data.rowsAffected === 1) {
             console.log(':: Service - borderorder success ::')
             await connection.close();
@@ -263,6 +249,53 @@ exports.searchOptionWarehouse = async (warehouseID,option) => {
         await connection.close();
         return data.rows;
     } catch (err) {
+        console.log(err);
+        throw Error(err);
+    }
+};
+
+exports.updateProductReady = async (warehouseID,productID) =>{
+    try{
+        console.log(warehouseID,productID);
+        
+        let connection = await pool.getConnection('ys');
+
+        const data = await connection.execute(query.updateProductReady,[warehouseID,productID]);
+        console.log(data);
+
+        await connection.close()
+        return data.rowsAffected;
+    }catch (err){
+        console.log(err);
+        throw Error(err);
+    }
+}
+
+exports.orderConfirm = async (orderID) =>{
+    try{
+        let connection = await pool.getConnection('ys');
+
+        const data = await connection.execute(query.orderConfirm,[orderID]);
+        console.log(data);
+
+        await connection.close()
+        return data.rowsAffected;
+    }catch (err){
+        console.log(err);
+        throw Error(err);
+    }
+}
+
+exports.minusProductQtt = async (body) =>{
+    try{
+        let connection = await pool.getConnection('ys');
+        const orderID = body.order_id;
+        const warehouseID = body.warehouse_id;
+        const data = await connection.execute(query.minusProductQtt,[orderID,warehouseID]);
+        console.log(data);
+        await connection.close()
+        return data.rowsAffected;
+    }catch (err){
         console.log(err);
         throw Error(err);
     }

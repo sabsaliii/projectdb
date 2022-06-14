@@ -422,14 +422,22 @@
                                        
                                         <% if (i==0 || flag==1){
                                             %>
-                                          <div style="font-size: large;font-weight: 700; width:25px; height: 25px;border:2px solid black;border-radius: 50%; background-color: rgba(112, 128, 144, 0.287);"><%=order_id%></div>
+                                          <div style="font-size: small;font-weight: 700; width:25px; height: 25px;border:2px solid black;border-radius: 50%; background-color: rgba(112, 128, 144, 0.287);"><%=order_id%></div>
                                         <%
                                         flag=0;
                                         }%> 
                                     </td>
                                     <td> <a href="/productDetail/<%=Data.PRODUCT_ID%>"><%=Data.PRODUCT_NAME%></a></td>
                                     <td> <%=Data.NAME%></td>
-                                    <td><%=Data.STATUS%></td>
+                                    <td>
+                                        <%if(Data.STATUS == 'Shipped'){
+                                            %> <span style="color: rgb(0, 102, 255);"> <%=Data.STATUS%></span>
+                                        <%}else if(Data.STATUS == 'Canceled'){
+                                            %> <span style="color: rgb(226,0,0);"> <%=Data.STATUS%></span>
+                                        <%}else{
+                                            %><%=Data.STATUS%>
+                                        <%}%>
+                                    </td>
                                     <td><%=dateString%></td>
                                     <td><%=Data.QUANTITY%></td>
                                     <td><%=Data.QUANTITY*Data.UNIT_PRICE%></td>
@@ -438,7 +446,7 @@
                                             %> <span style="color: rgb(226, 0, 0);"> <%=Data.READY%></span>
                                         <%}else{
                                             %> <span style="color: green;"> <%=Data.READY%></span>
-                                        !<%}%>
+                                        <%}%>
                                        
                                     </td>
                                 </tr>
@@ -454,7 +462,12 @@
                                             <td></td>
                                             <td></td>
                                             <td style= "padding: 10px 0 10px 0;">
-                                                <button style="width:150px; height: 40px; font-size: medium;">주문처리</button>
+                                                <form action="/admin/orderConfirm" method="post">
+                                                    <input type="hidden" value="<%=data[i].ORDER_ID%>" name="order_id">
+                                                    <input type="hidden" value="<%=data[i].WAREHOUSE_ID%>" name="warehouse_id">
+                                                    <input type="hidden" value="<%=data[i].CUSTOMER_ID%>" name="customer_id">
+                                                <button type="submit" style="width:150px; height: 40px; font-size: medium;"> 주문 확정 </button>
+                                                </form>
                                             </td>
                                         </tfoot>
                                     

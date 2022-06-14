@@ -72,7 +72,7 @@ exports.getBranch = async (req, res)=>{
 exports.getOrders = async (req,res) =>{
   try{
     const rows = await AdminService.getOrders();
-    console.log(rows);
+    // console.log(rows);
     return res.render('admin_orders',{data:rows});
   }catch (err){
     return res.status(500).json(err);
@@ -119,20 +119,31 @@ module.exports.getInfo = async (req,res)=>{
     }
 }
 
-exports.send = async(req,res) =>{
+exports.updateProductReady = async(req,res) =>{ //주문상품 준비상태 업뎃
     try{
       const warehouseID = req.params.warehouseId;
       const productID = req.query.productId;
       console.log(warehouseID,'send',productID);
-      await AdminService.send(warehouseID,productID);
+      // product_id 필요함 
+      // waerehouse_id 로 order_id를 알아내려면...???
+      //어케함..? 해당 warehouse_id가진 customer_id알아낸후 
+      //orders에서 해당 customer_id 인 부분의
+      //order_items ready를 true로
+      const row = await AdminService.updateProductReady(warehouseID,productID);
+      if(row == 0){
+        return res.send(`<script>alert("해당 제품의 주문 내역이 없습니다.");location.href="/warehouseDetail/${warehouseID}";</script>`);
+      }else{
+        return res.send(`<script>alert("해당 제품의 준비상태를 업데이트하였습니다.");location.href="/warehouseDetail/${warehouseID}";</script>`);
+      }
+
     }catch (err){
       return res.status(500).json(err);
     }
   };
   
-exports.borderOrders = async (req,res) =>{
+exports.borderOrders = async (req,res) =>{ //발주하기 border_orders테이블에 내용저장
     try{
-      // console.log(req.body);
+      console.log(req.body);
       let employeeID;
       const payroad = getCookiePayload(req,res);
       // console.log(payroad);
@@ -154,7 +165,7 @@ exports.borderOrders = async (req,res) =>{
     }
   };
 
-exports.searhOptionOrders = async (req,res)=>{
+exports.searhOptionOrders = async (req,res)=>{ //배송 status 별 보기
   try{  
     const option = url.parse(req.url, true).query.search_option;
     console.log(option);
@@ -175,7 +186,7 @@ exports.searhOptionInfo = async (req,res)=>{
   }
 }  
 
-exports.searchOptionWarehouse = async (req,res) => {
+exports.searchOptionWarehouse = async (req,res) => { // 창고 재고 보여줄때 주문 요청재고 유무로 보여주기
   try{
     const option = url.parse(req.url, true).query.search_option;
     console.log(option);
@@ -183,8 +194,34 @@ exports.searchOptionWarehouse = async (req,res) => {
     console.log(warehouseID)
     const rows = await AdminService.searchOptionWarehouse(warehouseID,option);
     // console.log(rows);
-    console.log(':: Controller - getWarehouse success ::');
+    console.log(':: Controller - searchOptionWarehouse success ::');
     return res.render('admin_warehouse_detailed', { data: rows});
+  }catch (err){
+    return res.status(500).json(err);
+  }
+}
+
+exports.orderConfirm = async (req,res)=>{ //주문확정
+  try{
+    
+    const orderID = req.body.order_id;
+    const row = await AdminService.orderConfirm(orderID);
+    console.log(':: Controller - orderConfirm success ::');
+    //product_id warehouse_id 필요
+    //order_id로 product_id quantity set 받아온후 inventories 에서 수량-1
+    //
+    console.log(req.body);
+    const row2 = await AdminService.minusProductQtt(req.body);
+    
+    if(row == 0){
+      return res.send(`<script>alert("실패");location.href="/admin/orders";</script>`);
+    }else if (row2==0){
+      return res.send(`<script>alert("재고부족");location.href="/admin/orders";</script>`);
+    }
+    else{
+      return res.send(`<script>alert("해당 주문건의 발송상태를 업데이트하였습니다.");location.href="/admin/orders";</script>`);
+    }
+
   }catch (err){
     return res.status(500).json(err);
   }

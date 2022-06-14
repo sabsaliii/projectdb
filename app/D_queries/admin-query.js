@@ -27,3 +27,9 @@ exports.searchShippedInfo = `select * from border_order_view natural join produc
 
 exports.searchOption_NotNull = 'select* from warehousedetail left join requestquantity on requestquantity.warehouse_id = warehousedetail.warehouse_id and requestquantity.product_id = warehousedetail.product_id where warehousedetail.warehouse_id= :warehouse_id and total is not null order by warehousedetail.warehouse_id'; 
 exports.searchOption_Null = 'select* from warehousedetail left join requestquantity on requestquantity.warehouse_id = warehousedetail.warehouse_id and requestquantity.product_id = warehousedetail.product_id where warehousedetail.warehouse_id= :warehouse_id and total is null order by warehousedetail.warehouse_id'; 
+
+exports.updateProductReady = `update order_items set  ready='true' where (order_id) in (select order_id from orders where (customer_id) in (select customer_id from customers where warehouse_id=:warehouse_id)) and product_id=:product_id`;
+
+exports.orderConfirm = `update orders set status='Shipped' where order_id = :order_id`;
+// exports.minusProductQtt = `update inventories set quantity = to_number(inventories.quantity)-to_number(:quantity) where (product_id) in (select product_id from order_items where order_id=:order_id) and warehouse_id=:warehouse_id`;
+exports.minusProductQtt = `update view_change_warehouse_qtt set warehouse_qtt = diff where order_id=:order_id and warehouse_id=:warehouse_id`;

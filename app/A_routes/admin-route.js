@@ -4,6 +4,7 @@ const AdminController = require('../B_controllers/admin-controller');
 const MiddleWare = require('../middleware/jwt');
 const {authAdmin} = require('../middleware/jwt');
 const {authEmployee} = require('../middleware/jwt');
+const { Router } = require('express');
 
 module.exports=router=>{
     router.use(bodyParser.json());
@@ -21,7 +22,7 @@ module.exports=router=>{
     router.get('/search_branch',authEmployee,AdminController.searchBranch);
     router.get('/search_admin',authEmployee,AdminController.searchAdmin);
 
-    router.get('/admin/send/:warehouseId',authEmployee,AdminController.send);
+    router.get('/admin/updateProductReady/:warehouseId',authEmployee,AdminController.updateProductReady);
     router.post('/admin/borderorders',authAdmin,AdminController.borderOrders);
 
     router.get('/admin/orders',authEmployee,AdminController.getOrders);
@@ -30,5 +31,7 @@ module.exports=router=>{
     router.get('/info-list',AdminController.getInfo);
     router.get('/info-list/option',authEmployee,AdminController.searhOptionInfo);
 
-    router.get('/warehouseDetail/:warehouseId/option',authEmployee,AdminController.searchOptionWarehouse);
+    router.get('/warehouseDetail/:warehouseId/option',authEmployee,AdminController.searchOptionWarehouse); //상품상태 업뎃
+
+    router.post('/admin/orderConfirm',authEmployee,AdminController.orderConfirm); //주문확정
 };

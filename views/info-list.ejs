@@ -289,10 +289,14 @@
 
         }
 
-        .main .section1 .box1 .box_item1 .buy_product .item_btn1 input[type=submit] {
+        .main .section1 .box1 .box_item1 .buy_product .item_btn1 button {
             background-color: white;
+            border-radius: 5px;
             width: 80px;
             height: 30px;
+        }
+        .main .section1 .box1 .box_item1 .buy_product .item_btn1 button:hover{
+            background-color: rgb(200,200,200);
         }
         .main .section1 .box1 .box_item1 .buy_product .item_btn2 {
             float: right;
@@ -380,7 +384,11 @@
                     <div class="buy_product">
                         <hr>
                         <div class="title">발주 내역</div>
-                        <div class="item_btn1"><input type="submit" value="csv로 변환"></div>
+                        <div class="item_btn1">
+                            <button type="button" onclick="exportTableToCsv('table', '발주내역')">
+                                Export
+                            </button>    
+                        </div>
                         <div class="item_btn2">
                             <form action="/info-list/option" method='get'>
                                 <select name="search_option" class="search_option">
@@ -393,7 +401,7 @@
                         </div>
                         <div style="clear:both"></div>
                         <div class="item1">
-                            <table>
+                            <table id ='table'>
                                 <tr>
                                     <th></th>
                                     <th>제품 이름</th>
@@ -436,5 +444,5 @@
     </footer>
 
 </body>
-
+<script src="/product-order.js"></script>
 </html>

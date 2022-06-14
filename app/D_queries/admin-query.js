@@ -6,7 +6,7 @@ exports.getBranches = 'select * from customers';
 exports.getBranch = 'select * from contacts natural join customers where contact_id = :num';
 exports.getBranches_category = 'select * from customers where warehouse_id= :num';
 
-exports.getOrders = 'select * from orders natural join order_items natural join products natural join customers';
+exports.getOrders = 'select * from orders o join order_items oi on o.order_id=oi.order_id join products p on oi.product_id=p.product_id join customers c on c.customer_id= o.customer_id order by o.order_id, oi.item_id';
 exports.searchBranch ='select*from customers where (name like :name or LOWER(name) like LOWER(:name) or UPPER(name) like UPPER(:name))';
 exports.searchAdmin ='select * from contacts where (first_name like :name or LOWER(first_name) like LOWER(:name) or UPPER(first_name) like UPPER(:name)) or (last_name like :name or LOWER(last_name) like LOWER(:name) or UPPER(last_name) like UPPER(:name))';
 
@@ -17,10 +17,13 @@ exports.getWarehouseDetail = 'select* from warehousedetail left join requestquan
 // exports.send = 'update ';
 exports.borderOrders = `insert into border_orders (product_id,employee_id,quantity,warehouse_id,order_date)values(:product_id,:employee_id,:quantity,:warehouse_id,to_date(:order_date,'YY-MM-DD hh24:mi:ss'))`;
 
-exports.searchPendingOrders = `select * from orders  o join order_items oi on o.order_id=oi.order_id join products p on oi.product_id = p.product_id join customers c on c.customer_id = o.customer_id where status ='Pending'`;
-exports.searchShippedOrders = `select * from orders  o join order_items oi on o.order_id=oi.order_id join products p on oi.product_id = p.product_id join customers c on c.customer_id = o.customer_id where status ='Shipped'`;
-exports.searchCanceledOrders =`select * from orders  o join order_items oi on o.order_id=oi.order_id join products p on oi.product_id = p.product_id join customers c on c.customer_id = o.customer_id where status ='Canceled'`;
+exports.searchPendingOrders = `select * from orders  o join order_items oi on o.order_id=oi.order_id join products p on oi.product_id = p.product_id join customers c on c.customer_id = o.customer_id where status ='Pending' order by o.order_id, oi.item_id`;
+exports.searchShippedOrders = `select * from orders  o join order_items oi on o.order_id=oi.order_id join products p on oi.product_id = p.product_id join customers c on c.customer_id = o.customer_id where status ='Shipped' order by o.order_id, oi.item_id`;
+exports.searchCanceledOrders =`select * from orders  o join order_items oi on o.order_id=oi.order_id join products p on oi.product_id = p.product_id join customers c on c.customer_id = o.customer_id where status ='Canceled' order by o.order_id, oi.item_id`;
 
 
 exports.searchPendingInfo = `select * from border_order_view natural join products where status = 'Pending'`;
 exports.searchShippedInfo = `select * from border_order_view natural join products where status ='Shipped'`;
+
+exports.searchOption_NotNull = 'select* from warehousedetail left join requestquantity on requestquantity.warehouse_id = warehousedetail.warehouse_id and requestquantity.product_id = warehousedetail.product_id where warehousedetail.warehouse_id= :warehouse_id and total is not null order by warehousedetail.warehouse_id'; 
+exports.searchOption_Null = 'select* from warehousedetail left join requestquantity on requestquantity.warehouse_id = warehousedetail.warehouse_id and requestquantity.product_id = warehousedetail.product_id where warehousedetail.warehouse_id= :warehouse_id and total is null order by warehousedetail.warehouse_id'; 

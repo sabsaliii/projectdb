@@ -30,5 +30,5 @@ module.exports=router=>{
     router.get('/info-list',AdminController.getInfo);
     router.get('/info-list/option',authEmployee,AdminController.searhOptionInfo);
 
-
+    router.get('/warehouseDetail/:warehouseId/option',authEmployee,AdminController.searchOptionWarehouse);
 };

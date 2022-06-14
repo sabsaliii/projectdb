@@ -237,3 +237,33 @@ exports.searhOptionInfo = async (option) => {
         throw Error(err);
     }
 }   
+
+exports.searchOptionWarehouse = async (warehouseID,option) => {
+    try {
+        let connection = await pool.getConnection('ys');
+        let data;
+        console.log(warehouseID,option);
+        console.log('도챡');
+        if(option == 1){
+            data = await connection.execute(query.searchOption_NotNull, [warehouseID]);
+            console.log(data.rows);
+            console.log('옵션 1');
+        }else if(option ==2){
+            data = await connection.execute(query.searchOption_Null, [warehouseID]);
+            console.log('옵션 2');
+        }else{
+            data = await connection.execute(query.getWarehouseDetail, [warehouseID]);
+            console.log('옵션 3');
+            
+        }
+        console.log(data.rows);
+
+        console.log(':: Service - searchOptionWarehouse success ::')
+       
+        await connection.close();
+        return data.rows;
+    } catch (err) {
+        console.log(err);
+        throw Error(err);
+    }
+}

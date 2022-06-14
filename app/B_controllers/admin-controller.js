@@ -72,6 +72,7 @@ exports.getBranch = async (req, res)=>{
 exports.getOrders = async (req,res) =>{
   try{
     const rows = await AdminService.getOrders();
+    console.log(rows);
     return res.render('admin_orders',{data:rows});
   }catch (err){
     return res.status(500).json(err);
@@ -173,3 +174,18 @@ exports.searhOptionInfo = async (req,res)=>{
     return res.status(500).json(err);
   }
 }  
+
+exports.searchOptionWarehouse = async (req,res) => {
+  try{
+    const option = url.parse(req.url, true).query.search_option;
+    console.log(option);
+    const warehouseID = req.params.warehouseId;
+    console.log(warehouseID)
+    const rows = await AdminService.searchOptionWarehouse(warehouseID,option);
+    // console.log(rows);
+    console.log(':: Controller - getWarehouse success ::');
+    return res.render('admin_warehouse_detailed', { data: rows});
+  }catch (err){
+    return res.status(500).json(err);
+  }
+}

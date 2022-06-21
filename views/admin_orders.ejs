@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>윤&현 컴퍼니</title>
+    <title>최윤서</title>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap');
@@ -407,6 +407,8 @@
                                     <th>주문날짜</th>
                                     <th>수량</th>
                                     <th>결제금액</th>
+                                    <th>상품 준비상태</th>
+                                    <th>주문처리</th>
                                 </tr>
 
                                 <% for(var i=0; i<=data.length-1; i++) { var Data=data[i]; var date=Data.ORDER_DATE; var
@@ -414,21 +416,48 @@
                                     day=('0' + date.getDate()).slice(-2); var hours=('0' + date.getHours()).slice(-2);
                                     var minutes=('0' + date.getMinutes()).slice(-2); var seconds=('0' +
                                     date.getSeconds()).slice(-2); var dateString=year + '-' + month + '-' + day +" " + hours + ':' + minutes  + ':' + seconds; 
+                                    var order_id=Data.ORDER_ID;
+                                    if(i!=data.length-1){
+                                        var prevorder_id= data[i+1].ORDER_ID;
+                                    }
+                                    var count =0;
+                                    var changed=false;
                                     %>
                                 <tr>
-                                    <td> <%=i+1%></td>
+                                   
+                                    <td>
+                                        <% if (prevorder_id < order_id){ 
+                                            changed = true; } else {
+                                            if(changed) {
+                                            %>
+                                            <%=order_id%>
+                                        <% changed = false; }  } %> 
+                                    </td>
                                     <td> <a href="/productDetail/<%=Data.PRODUCT_ID%>"><%=Data.PRODUCT_NAME%></a></td>
                                     <td> <%=Data.NAME%></td>
                                     <td><%=Data.STATUS%></td>
                                     <td><%=dateString%></td>
                                     <td><%=Data.QUANTITY%></td>
                                     <td><%=Data.QUANTITY*Data.UNIT_PRICE%></td>
- 
+                                    <td><%=Data.READY%></td>
+                                   
                                 </tr>
-                                <%} %>
-                        
-                              
+                                <tfoot>
+                                    <tr>
+                                        <% if (prevorder_id!=order_id){
+                                            %>
+                                        <td>    <button>주문처리</button></td>
+                                        <%}%>
+
+                                    </tr>
+                                </tfoot>
+                                <%} 
+                                    
+                                %>
+                               
+                               
                            </table>
+                           
                        </div>
                    </div>
                 </div>

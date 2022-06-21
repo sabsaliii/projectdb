@@ -6,7 +6,7 @@ exports.getBranches = 'select * from customers';
 exports.getBranch = 'select * from contacts natural join customers where contact_id = :num';
 exports.getBranches_category = 'select * from customers where warehouse_id= :num';
 
-exports.getOrders = 'select * from orders natural join order_items natural join products natural join customers';
+exports.getOrders = 'select * from orders natural join order_items natural join products natural join customers order by order_id';
 exports.searchBranch ='select*from customers where (name like :name or LOWER(name) like LOWER(:name) or UPPER(name) like UPPER(:name))';
 exports.searchAdmin ='select * from contacts where (first_name like :name or LOWER(first_name) like LOWER(:name) or UPPER(first_name) like UPPER(:name)) or (last_name like :name or LOWER(last_name) like LOWER(:name) or UPPER(last_name) like UPPER(:name))';
 

@@ -263,6 +263,14 @@
         font-size: 20pt;
         font-weight: 700;
     }
+    .main .section1 .box1 .box_item1 .buy_product .item_btn1{
+            
+            position: relative;
+          
+            padding:0 5px 8px 0 ;
+            text-align: right;
+            border-bottom :2px solid black;
+        }
     .main .section1 .box1 .box_item1 .buy_product .item1{
         /*border: 1px solid black;*/
         width: 95%;
@@ -364,6 +372,17 @@
                         <!-- <button type="button" onclick="exportTableToCsv('admin-warehouse-detail', 'Export_Test');">
                             Export
                         </button> -->
+                        <div class="item_btn1">
+                            <form action="/warehouseDetail/<%=data[0].WAREHOUSE_ID%>/option" method='get'>
+                                <select name="search_option" class="search_option" style="text-align: center;">
+                                    <option value="">----옵션----</option>
+                                    <option value=1 class="search_option_data">요청재고있음</option>
+                                    <option value=2 class="search_option_data">요청재고없음</option>
+                                    <option value=3 class="search_option_data">전체</option>
+                                </select>
+                                <button type="submit">필터</button>
+                            </form>
+                        </div>
                            <table id="admin-warehouse-detail">
                                 <tr>
                                     <th></th>
@@ -375,16 +394,19 @@
                                     <th>발주수량</th>
                                     <th>발주관리</th>
                                 </tr>
-                                <% for(var i=0; i<=data.length-1; i++) {
+                               
+                                <% 
+                                 
+                                    for(var i=0; i<=data.length-1; i++) {
                                     var Data = data[i];
-                                    %>
+                                %>
                                <tr>
                                    <td><%=i+1%></td>
                                    <td><a href="/productDetail/<%=Data.PRODUCT_ID%>"><%=Data.PRODUCT_NAME%></a></td>
                                    <td style="font-size:10pt ;"><%=Data.DESCRIPTION%></td>
                                     <td><%=Data.QUANTITY%></td>
                                    <td><%=Data.TOTAL%></td>
-                                   <td><button onclick="location.href ='/admin/send/<%=Data.WAREHOUSE_ID%>?productId=<%=Data.PRODUCT_ID%>'">주문처리</button></td>
+                                   <td><button onclick="location.href ='/admin/updateProductReady/<%=Data.WAREHOUSE_ID%>?productId=<%=Data.PRODUCT_ID%>'">주문처리</button></td>
                                    <form action ="/admin/borderorders" method="post">
                                    <td class="sendqtt">
                                     
@@ -397,7 +419,8 @@
                                    <td><button type="submit">발주</button></td>
                                 </form>
                                 </tr>   
-                                <%} %>                           
+                                <%} %>   
+                                                    
                             </table>
                        </div>
                    </div>

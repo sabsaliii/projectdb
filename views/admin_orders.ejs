@@ -268,55 +268,63 @@
     }*/
         .main .section1 .box1 .box_item1 .buy_product {
             /*border: 1px solid black;*/
-            width: 100%;
+            position: relative;
+            /* width: 100%; */
             min-height: 30vh;
             padding: 10px 10px 10px 10px;
-            /*margin: 0 auto;*/
+            margin: 0 auto;
+            display: flex;
+            flex-flow: column wrap;
         }
 
-        .main .section1 .box1 .box_item1 .buy_product hr {
+        /* .main .section1 .box1 .box_item1 .buy_product hr {
             margin: 0 0 0 25px;
             background-color: rgb(192, 192, 192);
-            /*padding: 0 0 0 25px;*/
+           
             height: 1px;
             width: 95%;
-        }
+        } */
 
         .main .section1 .box1 .box_item1 .buy_product .title {
-            /*border: 1px solid black;*/
+           
             padding: 30px 0 0 40px;
             font-size: 20pt;
             font-weight: 700;
         }
-        .main .section1 .box1 .box_item1 .buy_product .item_btn1 {
-            float: right;
-            padding: 0 30px 10px 0;
-
+        .main .section1 .box1 .box_item1 .buy_product .item_btn1{
+            
+            position: relative;
+          
+            padding:0 5px 8px 0 ;
+            text-align: right;
+            border-bottom :2px solid black;
         }
-
-        .main .section1 .box1 .box_item1 .buy_product .item1 {
-            /*border: 1px solid black;*/
-            width: 95%;
-            padding: 0 0 0 25px;
-
-        }
-
-        .main .section1 .box1 .box_item1 .buy_product .item1 table {
-            border: none;
-            width: 100%;
-            /*padding: 10px 30px 10px 30px;*/
+        .main .section1 .box1 .box_item1 .buy_product table {
+          
+           position: relative;
+           margin:0 auto;
+           /* width: 100% */
             border-collapse: collapse;
-            /*height: 100%;*/
-
         }
-
-        .main .section1 .box1 .box_item1 .buy_product .item1 tr,
-        td,
-        th {
-            /*margin: 5px 5px 5px 5px;*/
-            padding: 10px 30px 10px 30px;
+        .main .section1 .box1 .box_item1 .buy_product table tr{
+            width: 100%;
+            margin:0 auto;
             text-align: center;
-            border-top: 1px solid black;
+            padding-bottom: 50px;
+            border-bottom: 2px solid rgb(200, 200, 200);
+        }
+        .main .section1 .box1 .box_item1 .buy_product table th{
+            padding: 3px 10px 3px 10px;
+            /* border-collapse: collapse; */
+            border-bottom: 2px solid black;
+        }
+        .main .section1 .box1 .box_item1 .buy_product table td  {
+            /* margin: 5px 5px 5px 5px; */
+            border-collapse: collapse;
+            padding: 3px 10px 3px 10px;
+            margin:0;
+            text-align: center;
+            /* border-bottom: 1px solid black; */
         }
 
         .footer {
@@ -368,23 +376,8 @@
         <section class="section1">
             <div class="box1">
                 <div class="box_item1">
-                    <!-- <div class="customer_info">
-                       <div class="item_img1"><img src="https://emojigraph.org/media/openmoji/person-light-skin-tone-bald_1f9d1-1f3fb-200d-1f9b2.png"></div>
-                       <div class="item1">
-                           <ul>
-                               <li><span style="font-weight: 600;">Name  : </span> 최 윤서</li>
-                               <li><span style="font-weight: 600;">Email  :  </span> test@gmail.com</li>
-                               <li><span style="font-weight: 600;">Phone  :  </span> 010-1234-5678</li>
-                               <li><span style="font-weight: 600;">branch  :  </span> Occidental Petroleum</li>
-                               <li><span style="font-weight: 600;">Address  :  </span> Piazza Cacchiatore 23, Roma, </li>
-                               <li><span style="font-weight: 600;">WebSite  :  </span> http://www.oxy.com</li>
-                               <li><span style="font-weight: 600;">Credit Limit  : </span> 700</li>
-                           </ul>
-                       </div>
-                    </div> -->
 
                     <div class="buy_product">
-                        <!-- <hr> -->
                         <div class="title">주문 관리</div>
                         <div class="item_btn1">
                             <form action="/admin/orders/option" method='get'>
@@ -408,7 +401,11 @@
                                     <th>수량</th>
                                     <th>결제금액</th>
                                     <th>상품 준비상태</th>
+<<<<<<< HEAD
                                     <th>주문처리</th>
+=======
+                                    <!-- <th>주문처리</th> -->
+>>>>>>> e04791988a4b7a2712e8b5a72d112f23befc5529
                                 </tr>
 
                                 <% for(var i=0; i<=data.length-1; i++) { var Data=data[i]; var date=Data.ORDER_DATE; var
@@ -420,6 +417,7 @@
                                     if(i!=data.length-1){
                                         var prevorder_id= data[i+1].ORDER_ID;
                                     }
+<<<<<<< HEAD
                                     var count =0;
                                     var changed=false;
                                     %>
@@ -432,13 +430,37 @@
                                             %>
                                             <%=order_id%>
                                         <% changed = false; }  } %> 
+=======
+                                  
+                                    var flag;
+                                    %>
+                                <tr>
+                                   
+                                    <td class="orderbtn">
+                                       
+                                        <% if (i==0 || flag==1){
+                                            %>
+                                          <div style="font-size: small;font-weight: 700; width:25px; height: 25px;border:2px solid black;border-radius: 50%; background-color: rgba(112, 128, 144, 0.287);"><%=order_id%></div>
+                                        <%
+                                        flag=0;
+                                        }%> 
+>>>>>>> e04791988a4b7a2712e8b5a72d112f23befc5529
                                     </td>
                                     <td> <a href="/productDetail/<%=Data.PRODUCT_ID%>"><%=Data.PRODUCT_NAME%></a></td>
                                     <td> <%=Data.NAME%></td>
-                                    <td><%=Data.STATUS%></td>
+                                    <td>
+                                        <%if(Data.STATUS == 'Shipped'){
+                                            %> <span style="color: rgb(0, 102, 255);"> <%=Data.STATUS%></span>
+                                        <%}else if(Data.STATUS == 'Canceled'){
+                                            %> <span style="color: rgb(226,0,0);"> <%=Data.STATUS%></span>
+                                        <%}else{
+                                            %><%=Data.STATUS%>
+                                        <%}%>
+                                    </td>
                                     <td><%=dateString%></td>
                                     <td><%=Data.QUANTITY%></td>
                                     <td><%=Data.QUANTITY*Data.UNIT_PRICE%></td>
+<<<<<<< HEAD
                                     <td><%=Data.READY%></td>
                                    
                                 </tr>
@@ -451,6 +473,41 @@
 
                                     </tr>
                                 </tfoot>
+=======
+                                    <td>
+                                        <%if(Data.READY == 'false'){
+                                            %> <span style="color: rgb(226, 0, 0);"> <%=Data.READY%></span>
+                                        <%}else{
+                                            %> <span style="color: green;"> <%=Data.READY%></span>
+                                        <%}%>
+                                       
+                                    </td>
+                                </tr>
+                                
+                                    <% if ( i==0||prevorder_id!=order_id){
+                                        %>
+                                        <tfoot style="border-bottom:3px solid darkgray; ">
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td style= "padding: 10px 0 10px 0;">
+                                                <form action="/admin/orderConfirm" method="post">
+                                                    <input type="hidden" value="<%=data[i].ORDER_ID%>" name="order_id">
+                                                    <input type="hidden" value="<%=data[i].WAREHOUSE_ID%>" name="warehouse_id">
+                                                    <input type="hidden" value="<%=data[i].CUSTOMER_ID%>" name="customer_id">
+                                                <button type="submit" style="width:150px; height: 40px; font-size: medium;"> 주문 확정 </button>
+                                                </form>
+                                            </td>
+                                        </tfoot>
+                                    
+                                    <% 
+                                    if(i!=0)flag=1;} %>
+                               
+>>>>>>> e04791988a4b7a2712e8b5a72d112f23befc5529
                                 <%} 
                                     
                                 %>

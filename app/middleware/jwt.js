@@ -24,7 +24,7 @@ exports.authenticate = (req, res, next) => {
     try {
 
         if (!req.cookies.accessToken && !req.cookies.refreshToken) {
-            return res.send('<script>alert(\'로그인이 필요합니다.\');location.href="/loginform"</script>');
+            return res.send('<script>alert(\'접근권한이 없습니다.\');location.href="/loginform"</script>');
         }
 
         let accessToken;
@@ -62,7 +62,7 @@ exports.authAdmin = (req, res, next) => {
     try {
 
         if (!req.cookies.accessToken && !req.cookies.refreshToken) {
-            return res.send('<script>alert(\'로그인이 필요합니다.\');location.href="/loginform"</script>');
+            return res.send('<script>alert(\'접근권한이 없습니다.\');location.href="/loginform"</script>');
         }
 
         let accessToken;
@@ -78,7 +78,7 @@ exports.authAdmin = (req, res, next) => {
             try {
                 const refreshToken = jwt.verify(req.cookies.refreshToken, process.env.REFRESH_TOKEN_SECRET);
                 console.log(refreshToken.user_id);
-                accessToken = this.token().access(refreshToken.user_id);
+                accessToken = this.token().access(refreshToken.user_id,refreshToken.user_role);
                 res.cookie('accessToken', accessToken); //accessToken 업뎃 시켜주어서 자동로그인됨. (refresh토큰이 유효한 동안)
 
                 return res.send('<script>location.reload();</script>');
@@ -103,7 +103,7 @@ exports.authEmployee = (req, res, next) => {
     try {
 
         if (!req.cookies.accessToken && !req.cookies.refreshToken) {
-            return res.send('<script>alert(\'로그인이 필요합니다.\');location.href="/loginform"</script>');
+            return res.send('<script>alert(\'접근권한이 없습니다.\');location.href="/loginform"</script>');
         }
 
         let accessToken;
@@ -112,6 +112,7 @@ exports.authEmployee = (req, res, next) => {
         try {
             user = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
            // res.render('nav',{login:true});
+           console.log(user.user_role);
            if((user.user_role != 'admin')&&(user.user_role != 'employee')){
             return res.send('<script>alert(\'접근 권한이 없습니다.\'); location.href="/"</script>');
            }
@@ -119,7 +120,7 @@ exports.authEmployee = (req, res, next) => {
             try {
                 const refreshToken = jwt.verify(req.cookies.refreshToken, process.env.REFRESH_TOKEN_SECRET);
                 // console.log(refreshToken.user_id);
-                accessToken = this.token().access(refreshToken.user_id);
+                accessToken = this.token().access(refreshToken.user_id,refreshToken.user_role);
                 res.cookie('accessToken', accessToken); //accessToken 업뎃 시켜주어서 자동로그인됨. (refresh토큰이 유효한 동안)
 
                 return res.send('<script>location.reload();</script>');

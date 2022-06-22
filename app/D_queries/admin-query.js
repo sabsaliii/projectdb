@@ -1,5 +1,5 @@
 exports.getCustomers = 'select contact_id, first_name, last_name, name from contacts natural join customers';
-exports.getCustomer = 'select * from contacts join customers on contacts.customer_id = customers.customer_id left join (orders join (order_items join products on order_items.product_id = products.product_id) on orders.order_id = order_items.order_id) on contacts.customer_id = orders.customer_id where contacts.contact_id = :num';
+exports.getCustomer = 'select * from contacts join customers on contacts.customer_id = customers.customer_id left join (orders join (order_items join products on order_items.product_id = products.product_id) on orders.order_id = order_items.order_id) on contacts.customer_id = orders.customer_id where contacts.contact_id = :num order by orders.order_date';
 exports.getWarehouses = 'select * from warehouses';
 exports.getWarehouse = 'select * from warehouses join locations on warehouses.location_id = locations.location_id join inventories on warehouses.warehouse_id = inventories.warehouse_id join products on inventories.product_id = products.product_id where warehouses.warehouse_id = :num order by products.product_id';
 exports.getBranches = 'select * from customers';

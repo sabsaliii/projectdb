@@ -401,11 +401,7 @@
                                     <th>수량</th>
                                     <th>결제금액</th>
                                     <th>상품 준비상태</th>
-<<<<<<< HEAD
-                                    <th>주문처리</th>
-=======
                                     <!-- <th>주문처리</th> -->
->>>>>>> e04791988a4b7a2712e8b5a72d112f23befc5529
                                 </tr>
 
                                 <% for(var i=0; i<=data.length-1; i++) { var Data=data[i]; var date=Data.ORDER_DATE; var
@@ -417,20 +413,6 @@
                                     if(i!=data.length-1){
                                         var prevorder_id= data[i+1].ORDER_ID;
                                     }
-<<<<<<< HEAD
-                                    var count =0;
-                                    var changed=false;
-                                    %>
-                                <tr>
-                                   
-                                    <td>
-                                        <% if (prevorder_id < order_id){ 
-                                            changed = true; } else {
-                                            if(changed) {
-                                            %>
-                                            <%=order_id%>
-                                        <% changed = false; }  } %> 
-=======
                                   
                                     var flag;
                                     %>
@@ -444,7 +426,6 @@
                                         <%
                                         flag=0;
                                         }%> 
->>>>>>> e04791988a4b7a2712e8b5a72d112f23befc5529
                                     </td>
                                     <td> <a href="/productDetail/<%=Data.PRODUCT_ID%>"><%=Data.PRODUCT_NAME%></a></td>
                                     <td> <%=Data.NAME%></td>
@@ -460,20 +441,6 @@
                                     <td><%=dateString%></td>
                                     <td><%=Data.QUANTITY%></td>
                                     <td><%=Data.QUANTITY*Data.UNIT_PRICE%></td>
-<<<<<<< HEAD
-                                    <td><%=Data.READY%></td>
-                                   
-                                </tr>
-                                <tfoot>
-                                    <tr>
-                                        <% if (prevorder_id!=order_id){
-                                            %>
-                                        <td>    <button>주문처리</button></td>
-                                        <%}%>
-
-                                    </tr>
-                                </tfoot>
-=======
                                     <td>
                                         <%if(Data.READY == 'false'){
                                             %> <span style="color: rgb(226, 0, 0);"> <%=Data.READY%></span>
@@ -484,7 +451,7 @@
                                     </td>
                                 </tr>
                                 
-                                    <% if ( i==0||prevorder_id!=order_id){
+                                    <% if ( i==0||prevorder_id!=order_id||i==data.length-1){
                                         %>
                                         <tfoot style="border-bottom:3px solid darkgray; ">
                                             <td></td>
@@ -507,7 +474,6 @@
                                     <% 
                                     if(i!=0)flag=1;} %>
                                
->>>>>>> e04791988a4b7a2712e8b5a72d112f23befc5529
                                 <%} 
                                     
                                 %>
